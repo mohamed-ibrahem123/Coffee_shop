@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Search, Heart, ShoppingBag, User } from 'lucide-react';
 import './Navbar.css';
