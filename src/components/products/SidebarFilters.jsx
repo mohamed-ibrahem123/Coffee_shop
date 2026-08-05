@@ -1,4 +1,3 @@
-import React from 'react';
 import './SidebarFilters.css';
 
 const CATEGORIES = [
