@@ -1,0 +1,140 @@
+.skeleton-product-card {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton-title {
+  height: 20px;
+  width: 75%;
+}
+
+.skeleton-desc {
+  height: 14px;
+  width: 90%;
+}
+
+.skeleton-rating {
+  height: 16px;
+  width: 40%;
+}
+
+.skeleton-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.skeleton-price {
+  height: 22px;
+  width: 35%;
+}
+
+.skeleton-btn {
+  height: 36px;
+  width: 110px;
+  border-radius: var(--radius-sm);
+}
+
+/* Skeleton Details */
+.skeleton-details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.skeleton-details-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.skeleton-details-image-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skeleton-details-main-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-thumbnails {
+  display: flex;
+  gap: 12px;
+}
+
+.skeleton-thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-details-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skeleton-details-title {
+  height: 36px;
+  width: 60%;
+}
+
+.skeleton-details-price {
+  height: 24px;
+  width: 30%;
+}
+
+.skeleton-details-rating {
+  height: 18px;
+  width: 40%;
+}
+
+.skeleton-details-desc {
+  height: 16px;
+}
+
+.skeleton-details-options {
+  height: 40px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.skeleton-details-btns {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.skeleton-action-btn {
+  height: 46px;
+  flex: 1;
+  border-radius: var(--radius-full);
+}
+
+@media (max-width: 768px) {
+  .skeleton-details-top {
+    grid-template-columns: 1fr;
+  }
+}

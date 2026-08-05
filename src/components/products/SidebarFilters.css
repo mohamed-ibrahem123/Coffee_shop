@@ -1,0 +1,139 @@
+.sidebar-filters-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.filters-heading {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 12px;
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filter-subheading {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.categories-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.category-item {
+  font-size: 13px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.category-item:hover {
+  color: var(--primary-brown);
+  background-color: #FAF5F0;
+}
+
+.category-item.active {
+  color: var(--primary-brown);
+  font-weight: 700;
+  background-color: #F5ECE3;
+}
+
+.filter-divider {
+  height: 1px;
+  background-color: var(--border-subtle);
+}
+
+.price-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price-value {
+  font-weight: 700;
+  color: var(--primary-brown);
+}
+
+.price-slider-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.price-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #E8E2D9;
+  outline: none;
+}
+
+.price-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary-brown);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.price-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary-brown);
+  cursor: pointer;
+}
+
+.price-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.drink-types-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.checkbox-label:hover {
+  color: var(--text-main);
+}
+
+.custom-checkbox {
+  accent-color: var(--primary-brown);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
