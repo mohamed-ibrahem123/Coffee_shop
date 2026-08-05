@@ -1,0 +1,441 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --home-bg: #ffffff;
+  --home-dark: #20120a;
+  --home-espresso: #2c1810;
+  --home-espresso-hover: #45271b;
+  --home-gold: #d7b583;
+  --home-gold-hover: #e5c596;
+  --home-gold-line: #cda872;
+  --home-offer-bg: #f5ebd9;
+  --home-cream-circle: #f6ede2;
+  --home-text-subtle: #665c54;
+  --home-star-gold: #f4b400;
+  --home-radius-card: 20px;
+  --home-font-serif: 'Playfair Display', Georgia, serif;
+  --home-font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+.home-container {
+  font-family: var(--home-font-sans);
+  color: var(--home-dark);
+  background-color: var(--home-bg);
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   1. Hero Banner Section
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  background: linear-gradient(
+      90deg,
+      rgba(22, 11, 5, 0.9) 0%,
+      rgba(22, 11, 5, 0.6) 42%,
+      rgba(22, 11, 5, 0.1) 75%
+    ),
+    url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1600&q=80')
+      center right / cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 4.5rem 9%;
+}
+
+.hero-content {
+  max-width: 520px;
+  color: #ffffff;
+  z-index: 2;
+}
+
+.hero-title {
+  font-family: var(--home-font-serif);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2.2rem;
+  font-weight: 400;
+}
+
+.hero-btn {
+  background-color: var(--home-gold);
+  color: var(--home-espresso);
+  font-family: var(--home-font-sans);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.9rem 2.5rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+}
+
+.hero-btn:hover {
+  background-color: var(--home-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   2. Shared Section Utilities
+   ========================================================================== */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.section-title {
+  font-family: var(--home-font-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--home-espresso);
+  text-align: center;
+  margin-bottom: 2.8rem;
+  letter-spacing: -0.3px;
+}
+
+/* ==========================================================================
+   3. Featured Categories Section
+   ========================================================================== */
+.categories-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.category-card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  min-height: 200px;
+  border-radius: var(--home-radius-card);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(44, 24, 16, 0.08);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(44, 24, 16, 0.2);
+}
+
+.category-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.category-card:hover .category-img {
+  transform: scale(1.08);
+}
+
+.category-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(20, 10, 5, 0.92) 0%,
+    rgba(20, 10, 5, 0.35) 55%,
+    transparent 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1.25rem 0.85rem;
+}
+
+.category-name {
+  font-family: var(--home-font-serif);
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+/* Pagination Bar Below Categories */
+.categories-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+
+.pagination-bar {
+  height: 4px;
+  width: 48px;
+  border-radius: 3px;
+  background-color: #e6dfd5;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-bar.active {
+  background-color: var(--home-gold-line);
+}
+
+/* ==========================================================================
+   4. Popular Products Section
+   ========================================================================== */
+.drinks-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Automatic Card styling for ProductCard component rendered inside drinks-grid */
+.drinks-grid > * {
+  background-color: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f2ece4;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
+}
+
+.drinks-grid > *:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 28px rgba(44, 24, 16, 0.12);
+}
+
+/* ==========================================================================
+   5. Today's Offers Banner Section
+   ========================================================================== */
+.offers-section {
+  padding-bottom: 6rem;
+}
+
+.offer-banner-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.offer-decorative-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 13px;
+  background-color: var(--home-gold-line);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.offer-banner {
+  position: relative;
+  z-index: 2;
+  background-color: var(--home-offer-bg);
+  border-radius: 18px;
+  padding: 2.5rem 3.5rem;  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 960px;
+  margin: 0 auto;
+  box-shadow: 0 6px 20px rgba(44, 24, 16, 0.06);
+}
+
+.offer-left {
+  max-width: 480px;
+}
+
+.offer-title {
+  font-family: var(--home-font-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--home-espresso);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.18;
+  letter-spacing: -0.3px;
+}
+
+.offer-code {
+  font-size: 0.98rem;
+  color: var(--home-text-subtle);
+  margin-bottom: 1.6rem;
+  font-weight: 500;
+}
+
+.offer-btn {
+  background-color: var(--home-espresso-hover);
+  color: #ffffff;
+  font-family: var(--home-font-sans);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.offer-btn:hover {
+  background-color: var(--home-espresso);
+  transform: translateY(-2px);
+}
+
+.offer-right {
+  width: 240px;
+  height: 250px;
+  border-radius: 14px;
+  overflow: hidden;
+  flex-shrink: 1;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.offer-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints for Desktop, Tablet, and Mobile
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .categories-grid,
+  .drinks-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .offer-banner {
+    padding: 2rem;
+  }
+
+  .offer-title {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    min-height: 400px;
+    padding: 3rem 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .section-container {
+    padding: 2.8rem 1.25rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .categories-grid,
+  .drinks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 1.75rem 1.25rem;
+  }
+
+  .offer-right {
+    width: 100%;
+    height: 180px;
+  }
+
+  .offer-left {
+    max-width: 100%;
+  }
+
+  .offer-decorative-line {
+    display: none;
+  }
+}
+/*  categories btn    */ 
+.pagination-bar {
+  cursor: pointer;
+}
+
+.categories-nav-btn {
+  position: absolute;
+  right: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+  border: 1px solid #e6dfd5;
+
+  background-color: #ffffff;
+  color: var(--home-espresso);
+
+  font-size: 25px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 6px 15px rgba(44, 24, 16, 0.12);
+
+  transition: all 0.3s ease;
+}
+
+
+.categories-nav-btn:hover {
+  background-color: var(--home-espresso);
+  color: #ffffff;
+
+  transform: translateY(-50%) scale(1.08);
+
+  box-shadow: 0 10px 20px rgba(44, 24, 16, 0.2);
+}
+
+
+.categories-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+

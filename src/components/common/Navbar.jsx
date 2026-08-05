@@ -2,21 +2,19 @@ import { Link, useLocation } from 'react-router-dom';
 import { Search, Heart, ShoppingBag, User } from 'lucide-react';
 import './Navbar.css';
 
+
 const Navbar = () => {
   const location = useLocation();
 
-  const isActive = (path) => {
-    if (path === '/products' || path === '/') {
-      return location.pathname === '/' || location.pathname.startsWith('/products');
-    }
-    return location.pathname === path;
-  };
+const isActive = (path) => {
+  return location.pathname === path;
+};
 
   return (
     <header className="caffinity-navbar-wrapper">
       <nav className="caffinity-navbar">
         {/* Brand Logo */}
-        <Link to="/products" className="navbar-brand">
+        <Link to="/" className="navbar-brand">
           <div className="logo-icon-wrapper">
             <span className="logo-icon-inner">☕</span>
           </div>
@@ -25,8 +23,12 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <div className="navbar-links">
-          <Link to="/products" className={`nav-link ${isActive('/products') ? 'active' : ''}`}>
-            Home
+          <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>
+           Home
+          </Link>
+          <Link to="/products"
+             className={`nav-link ${isActive("/products") ? "active" : ""}`}>
+            Shop
           </Link>
           <a href="#about" className="nav-link">
             About
