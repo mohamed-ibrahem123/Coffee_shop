@@ -4,12 +4,17 @@ import ProductCard from "../components/products/ProductCard";
 import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
 
+// Products data
 export default function HomePage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // Categories slider
   const [categoryStart, setCategoryStart] = useState(0);
 
+
+// Fetch products from API when the page loads
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -26,6 +31,7 @@ export default function HomePage() {
   }, []);
 
 
+// Add a special class to the body for Home page styling only(home footer)
   useEffect(() => {
   document.body.classList.add("home-page");
 
@@ -35,6 +41,7 @@ export default function HomePage() {
 }, []);
 
 
+// Extract unique categories from products
   const categories = [
     ...new Set(products.map((product) => product.category))
   ].map((category, index) => ({
@@ -46,12 +53,14 @@ export default function HomePage() {
   }));
 
 
+// Display only 4 categories at a time
   const visibleCategories = categories.slice(
     categoryStart,
     categoryStart + 4
   );
 
 
+// Move to the next group of categories
   const handleNextCategories = () => {
     if (categoryStart + 4 < categories.length) {
       setCategoryStart(categoryStart + 4);
@@ -60,6 +69,7 @@ export default function HomePage() {
     }
   };
 
+  // Navigation
   const navigate = useNavigate();
 
   return (
