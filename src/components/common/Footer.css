@@ -87,3 +87,21 @@
     gap: 28px;
   }
 }
+
+/* home footer */ 
+
+.home-page .caffinity-footer {
+  background: #2C1810;
+}
+
+.home-page .caffinity-footer * {
+  color: white;
+}
+
+.home-page .caffinity-footer a:hover {
+  color: #d7b583;
+}
+
+.home-page .caffinity-footer .contact-icon {
+  color: #d7b583;
+}

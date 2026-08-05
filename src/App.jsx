@@ -5,6 +5,7 @@ import Footer from './components/common/Footer';
 import ShopPage from './pages/ShopPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import './App.css';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Navbar />
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<Navigate to="/products" replace />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/products" element={<ShopPage />} />
             <Route path="/products/:id" element={<ProductDetailsPage />} />
             <Route path="*" element={<Navigate to="/products" replace />} />
