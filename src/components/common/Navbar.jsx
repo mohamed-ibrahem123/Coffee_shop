@@ -1,10 +1,13 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Search, Heart, ShoppingBag, User } from 'lucide-react';
+import { useCart } from '../../context/CartContext';
 import './Navbar.css';
-
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const { totalCartCount } = useCart();
 
 const isActive = (path) => {
   return location.pathname === path;
@@ -49,9 +52,13 @@ const isActive = (path) => {
           <button className="action-btn" aria-label="Wishlist">
             <Heart className="action-icon" size={20} />
           </button>
-          <button className="action-btn cart-btn" aria-label="Shopping Cart">
+          <button 
+            className="action-btn cart-btn" 
+            aria-label="Shopping Cart"
+            onClick={() => navigate('/cart')}
+          >
             <ShoppingBag className="action-icon" size={20} />
-            <span className="cart-badge">0</span>
+            <span className="cart-badge">{totalCartCount}</span>
           </button>
           <button className="action-btn" aria-label="User Profile">
             <User className="action-icon" size={20} />
