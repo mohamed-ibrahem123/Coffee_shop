@@ -16,8 +16,8 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 36px;
+  grid-template-columns: 1.4fr 1fr 1.2fr;
+  gap: 48px;
   margin-bottom: 44px;
 }
 
@@ -26,6 +26,113 @@
   flex-direction: column;
 }
 
+/* Brand Column Styles */
+.brand-column {
+  padding-right: 12px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+
+.footer-logo-img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.footer-brand-name {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: #F5E6D3;
+  letter-spacing: -0.2px;
+}
+
+.footer-brand-desc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #C8B9A6;
+  margin-bottom: 24px;
+}
+
+.footer-social-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-subheading {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #D7B583;
+  text-transform: uppercase;
+}
+
+/* Social Media Icons */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(215, 181, 131, 0.08);
+  border: 1px solid rgba(215, 181, 131, 0.2);
+  color: #D7B583;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-btn svg {
+  transition: transform 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
+}
+
+.social-btn:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Social Media Brand Hover Effects */
+.social-btn.facebook:hover {
+  background-color: #1877F2;
+  border-color: #1877F2;
+  color: #ffffff;
+}
+
+.social-btn.instagram:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.social-btn.whatsapp:hover {
+  background-color: #25D366;
+  border-color: #25D366;
+  color: #ffffff;
+}
+
+.social-btn.x-twitter:hover {
+  background-color: #000000;
+  border-color: #444444;
+  color: #ffffff;
+}
+
+/* Standard Footer Headings */
 .footer-heading {
   font-family: var(--font-sans);
   font-size: 14px;
@@ -63,6 +170,7 @@
   text-decoration: none;
   transition: all 0.25s ease;
   display: inline-block;
+  position: relative;
 }
 
 .footer-list a:hover {
@@ -116,6 +224,7 @@
   letter-spacing: 0.3px;
 }
 
+/* Responsive Breakdown */
 @media (max-width: 992px) {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -130,6 +239,10 @@
 
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 32px;
   }
-}
+
+  .brand-column {
+    padding-right: 0;
+  }
+}
