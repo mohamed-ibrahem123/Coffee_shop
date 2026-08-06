@@ -1,33 +1,31 @@
-import React, { useState } from 'react';
-import { useCart } from '../context/CartContext';
-import { useNavigate } from 'react-router-dom';
-import './CheckoutPage.css';
+import { useState } from "react";
+import { useCart } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
+import "./CheckoutPage.css";
 
 // Shipping cost and fixed taxes used in the order summary
 const SHIPPING = 5.0;
 const TAXES = 1.2;
 
 export default function CheckoutPage() {
-
   // Used to navigate the user to another page after completing the order
   const navigate = useNavigate();
 
-
   // Get cart data and functions from Cart Context
   const {
-    cartItems,     // Products added to cart
-    subtotal,      // Total price of products before shipping and taxes
-    clearCart,     // Clears the cart after successful checkout
+    cartItems, // Products added to cart
+    subtotal, // Total price of products before shipping and taxes
+    clearCart, // Clears the cart after successful checkout
   } = useCart();
 
   // Store customer information entered in the checkout form
   const [form, setForm] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    address: '',
-    city: '',
-    notes: '',
+    fullName: "",
+    email: "",
+    phone: "",
+    address: "",
+    city: "",
+    notes: "",
   });
 
   // Store validation error messages for form fields
@@ -40,7 +38,6 @@ export default function CheckoutPage() {
 
   // Handles changes in form inputs and updates the form state
   const handleChange = (e) => {
-
     const { name, value } = e.target;
 
     setForm((prev) => ({
@@ -50,17 +47,15 @@ export default function CheckoutPage() {
 
     // Remove error message when the user starts correcting the field
     if (errors[name]) {
-
       setErrors((prev) => ({
         ...prev,
-        [name]: '',
+        [name]: "",
       }));
     }
   };
 
   // Checks that all required fields contain valid data
   const validate = () => {
-
     const newErrors = {};
 
     if (!form.fullName.trim()) {
@@ -68,13 +63,9 @@ export default function CheckoutPage() {
     }
 
     if (!form.email.trim()) {
-
       newErrors.email = "Email is required";
-
     } else if (!/\S+@\S+\.\S+/.test(form.email)) {
-
       newErrors.email = "Enter a valid email";
-
     }
 
     if (!form.phone.trim()) {
@@ -90,12 +81,10 @@ export default function CheckoutPage() {
     }
 
     return newErrors;
-
   };
 
   // Handles form submission after clicking Place Order
   const handleSubmit = (e) => {
-
     e.preventDefault();
 
     // Run validation before submitting the order
@@ -111,24 +100,15 @@ export default function CheckoutPage() {
     clearCart();
 
     // Redirect user to thank you page
-    navigate('/thank-you');
-
+    navigate("/thank-you");
   };
 
   return (
-
     <div className="checkout-page">
       <div className="checkout-content">
-
         {/* Checkout form containing customer information and order summary */}
-        <form
-          className="checkout-form-card"
-          onSubmit={handleSubmit}
-          noValidate
-        >
-          <h2 className="checkout-form-title">
-            Checkout
-          </h2>
+        <form className="checkout-form-card" onSubmit={handleSubmit} noValidate>
+          <h2 className="checkout-form-title">Checkout</h2>
 
           {/* Customer full name input */}
           <input
@@ -139,11 +119,7 @@ export default function CheckoutPage() {
             onChange={handleChange}
           />
 
-          {errors.fullName && (
-            <p className="error">
-              {errors.fullName}
-            </p>
-          )}
+          {errors.fullName && <p className="error">{errors.fullName}</p>}
 
           {/* Customer email input */}
           <input
@@ -154,11 +130,7 @@ export default function CheckoutPage() {
             onChange={handleChange}
           />
 
-          {errors.email && (
-            <p className="error">
-              {errors.email}
-            </p>
-          )}
+          {errors.email && <p className="error">{errors.email}</p>}
 
           {/* Customer phone number input */}
           <input
@@ -169,11 +141,7 @@ export default function CheckoutPage() {
             onChange={handleChange}
           />
 
-          {errors.phone && (
-            <p className="error">
-              {errors.phone}
-            </p>
-          )}
+          {errors.phone && <p className="error">{errors.phone}</p>}
 
           {/* Customer address input */}
           <input
@@ -184,11 +152,7 @@ export default function CheckoutPage() {
             onChange={handleChange}
           />
 
-          {errors.address && (
-            <p className="error">
-              {errors.address}
-            </p>
-          )}
+          {errors.address && <p className="error">{errors.address}</p>}
 
           {/* Customer city input */}
           <input
@@ -198,11 +162,7 @@ export default function CheckoutPage() {
             value={form.city}
             onChange={handleChange}
           />
-          {errors.city && (
-            <p className="error">
-              {errors.city}
-            </p>
-          )}
+          {errors.city && <p className="error">{errors.city}</p>}
 
           {/* Optional order notes */}
           <textarea
@@ -214,18 +174,11 @@ export default function CheckoutPage() {
 
           {/* Displays products and total order price */}
           <div className="order-summary">
-
-            <h3 className="summary-title">
-              Order Summary
-            </h3>
+            <h3 className="summary-title">Order Summary</h3>
 
             {/* Display every product added to cart */}
             {cartItems.map((item) => (
-
-              <div
-                className="checkout-item"
-                key={item._id}
-              >
+              <div className="checkout-item" key={item._id}>
                 <img
                   src={item.image}
                   alt={item.name}
@@ -233,22 +186,15 @@ export default function CheckoutPage() {
                 />
                 <div className="checkout-item-info">
                   {/* Product name */}
-                  <p className="checkout-item-name">
-                    {item.name}
-                  </p>
+                  <p className="checkout-item-name">{item.name}</p>
 
                   {/* Product quantity */}
-                  <span>
-                    Qty: {item.quantity}
-                  </span>
-
+                  <span>Qty: {item.quantity}</span>
                 </div>
 
                 {/* Total price for this product based on quantity */}
                 <span className="checkout-item-price">
-
                   USD {(item.price * item.quantity).toFixed(2)}
-
                 </span>
               </div>
             ))}
@@ -256,72 +202,41 @@ export default function CheckoutPage() {
 
             {/* Order subtotal before extra costs */}
             <div className="summary-row">
+              <span>Subtotal:</span>
 
-              <span>
-                Subtotal:
-              </span>
-
-              <span>
-                USD {subtotal.toFixed(2)}
-              </span>
-
+              <span>USD {subtotal.toFixed(2)}</span>
             </div>
 
             {/* Shipping cost */}
             <div className="summary-row">
+              <span>Shipping:</span>
 
-              <span>
-                Shipping:
-              </span>
-
-              <span>
-                USD {shipping.toFixed(2)}
-              </span>
-
+              <span>USD {shipping.toFixed(2)}</span>
             </div>
 
             {/* Taxes amount */}
             <div className="summary-row">
+              <span>Taxes:</span>
 
-              <span>
-                Taxes:
-              </span>
-
-              <span>
-                USD {taxes.toFixed(2)}
-              </span>
-
+              <span>USD {taxes.toFixed(2)}</span>
             </div>
 
             <hr />
 
             {/* Final amount user has to pay */}
             <div className="summary-row total-row">
+              <strong>Total:</strong>
 
-              <strong>
-                Total:
-              </strong>
-
-              <strong>
-                USD {total.toFixed(2)}
-              </strong>
-
+              <strong>USD {total.toFixed(2)}</strong>
             </div>
           </div>
 
           {/* Submit checkout form */}
-          <button
-            type="submit"
-            className="checkout-btn-primary"
-          >
+          <button type="submit" className="checkout-btn-primary">
             PLACE ORDER
           </button>
-
-
         </form>
       </div>
     </div>
-
   );
-
 }
