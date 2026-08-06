@@ -4,39 +4,39 @@ import "./BlogPage.css";
 const blogPosts = [
   {
     id: 1,
-    title: "أفضل طريقة لتحضير القهوة في البيت",
-    excerpt: "تعرف على الخطوات الصح لعمل كوب قهوة مثالي زي الكافيهات المحترفة من غير ما تخرج من بيتك.",
+    title: "The Best Way to Brew Coffee at Home",
+    excerpt: "Learn the right steps to make a perfect cup of coffee, just like your favorite professional cafe, without leaving your house.",
     category: "Brewing Tips",
-    date: "١ أغسطس ٢٠٢٦",
+    date: "August 1, 2026",
     image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600",
-    readTime: "٥ دقايق",
+    readTime: "5 min read",
   },
   {
     id: 2,
-    title: "الفرق بين الإسبريسو واللاتيه والكابتشينو",
-    excerpt: "مش عارف تفرق بينهم؟ هنشرحلك الفرق في المكونات والطعم والطريقة بشكل بسيط.",
+    title: "Espresso vs. Latte vs. Cappuccino: What's the Difference?",
+    excerpt: "Can't tell them apart? We'll break down the differences in ingredients, taste, and preparation in a simple way.",
     category: "Coffee 101",
-    date: "٢٨ يوليو ٢٠٢٦",
+    date: "July 28, 2026",
     image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600",
-    readTime: "٤ دقايق",
+    readTime: "4 min read",
   },
   {
     id: 3,
-    title: "رحلة حبة القهوة من المزرعة للكوباية",
-    excerpt: "قصة مشوقة عن إزاي حبة القهوة بتتحصد وبتتحمص لحد ما توصلك في كوبايتك الصبح.",
+    title: "The Journey of a Coffee Bean, From Farm to Cup",
+    excerpt: "A fascinating story of how coffee beans are harvested and roasted before they reach your morning cup.",
     category: "Origins",
-    date: "٢٠ يوليو ٢٠٢٦",
+    date: "July 20, 2026",
     image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600",
-    readTime: "٦ دقايق",
+    readTime: "6 min read",
   },
   {
     id: 4,
-    title: "فوائد الشاي الأخضر للصحة",
-    excerpt: "اكتشف ليه الشاي الأخضر بقى مشروب أساسي لمحبي الصحة حوالين العالم.",
+    title: "The Health Benefits of Green Tea",
+    excerpt: "Discover why green tea has become an essential drink for health-conscious people around the world.",
     category: "Health",
-    date: "١٥ يوليو ٢٠٢٦",
+    date: "July 15, 2026",
     image: "https://images.unsplash.com/photo-1556881286-fc6915169721?w=600",
-    readTime: "٣ دقايق",
+    readTime: "3 min read",
   },
 ];
 
@@ -47,7 +47,7 @@ export default function BlogPage() {
         <span className="blog-hero-badge">Our Journal</span>
         <h1 className="blog-hero-title">The Coffee Chronicles</h1>
         <p className="blog-hero-subtitle">
-          حكايات، نصايح، ومعلومات عن عالم القهوة والمشروبات
+          Stories, tips, and insights from the world of coffee and beverages
         </p>
       </div>
 
@@ -66,7 +66,7 @@ export default function BlogPage() {
               </div>
               <h3 className="blog-card-title">{post.title}</h3>
               <p className="blog-card-excerpt">{post.excerpt}</p>
-              <span className="blog-card-link">اقرأ المزيد →</span>
+              <span className="blog-card-link">Read More →</span>
             </div>
           </Link>
         ))}
