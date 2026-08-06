@@ -59,12 +59,63 @@ const ShopPage = () => {
       if (!matchName && !matchDesc) return false;
     }
 
-    // Category filter
-    if (selectedCategory) {
-      if (item.category?.toLowerCase() !== selectedCategory.toLowerCase()) {
-        return false;
-      }
-    }
+    
+  // Category filter
+  if (selectedCategory) {
+    const categoryMap = {
+      Espresso: ["Espresso"],
+      Coffee: [
+        "Americano",
+        "Cappuccino",
+        "Latte",
+        "Mocha",
+        "Flat White",
+        "Cortado",
+        "Turkish Coffee",
+        "French Coffee",
+        "Spanish Latte",
+        "Iced Coffee",
+        "Iced Latte",
+        "Iced Mocha",
+        "Iced Americano",
+        "Cold Brew",
+        "Frappuccino",
+      ],
+      Tea: [
+        "Black Tea",
+        "Green Tea",
+        "Mint Tea",
+        "Karak Tea",
+        "Matcha Latte",
+        "Hibiscus Tea",
+        "Iced Tea",
+      ],
+      Specialty: [
+        "Hot Chocolate",
+        "Natural Energy Drink",
+        "Energy Drinks",
+        "Licorice Drink",
+        "Carob Drink",
+        "Sugarcane Juice",
+        "Tamarind Drink",
+        "Jallab",
+        "Qamar Al-Din",
+      ],
+      Milkshakes: ["Milkshake"],
+      Smoothies: ["Smoothie"],
+      "Fresh Juices": ["Juice"],
+    };
+
+    const keywords = categoryMap[selectedCategory] || [];
+
+    const matches = keywords.some(
+      (word) =>
+        item.name?.toLowerCase().includes(word.toLowerCase()) ||
+        item.category?.toLowerCase().includes(word.toLowerCase())
+    );
+
+    if (!matches) return false;
+  }
 
     // Price filter
     if (item.price > priceMax) {
