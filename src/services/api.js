@@ -10,9 +10,12 @@ const apiClient = axios.create({
   timeout: 10000,
 });
 
-export const getProducts = async (sort = '-createdAt,price,-ratingsAverage', params = {}) => {
+export const getProducts = async (
+  sort = "-createdAt,price,-ratingsAverage",
+  params = {},
+) => {
   try {
-    const response = await apiClient.get('/products', {
+    const response = await apiClient.get("/products", {
       params: {
         sort,
         ...params,
@@ -21,19 +24,22 @@ export const getProducts = async (sort = '-createdAt,price,-ratingsAverage', par
 
     // Handle different API response formats: { data: [...] }, { data: { data: [...] } }, or [...]
     const result = response.data;
+
     if (Array.isArray(result)) {
       return result;
     }
+
     if (result && Array.isArray(result.data)) {
       return result.data;
     }
+
     if (result && result.data && Array.isArray(result.data.data)) {
       return result.data.data;
     }
 
     return result.data || [];
   } catch (error) {
-    console.error('Error fetching products:', error);
+    console.error("Error fetching products:", error);
     throw error;
   }
 };

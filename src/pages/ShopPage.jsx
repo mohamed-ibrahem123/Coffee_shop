@@ -10,25 +10,25 @@ import './ShopPage.css';
 
 const ShopPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const selectedCategory = searchParams.get('category') || '';
+  const selectedCategory = searchParams.get("category") || "";
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   // Filter & Search states
-  const [searchTerm, setSearchTerm] = useState('');
-  const [activeSearch, setActiveSearch] = useState('');
-  const [sortBy, setSortBy] = useState('-createdAt,price,-ratingsAverage');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeSearch, setActiveSearch] = useState("");
+  const [sortBy, setSortBy] = useState("-createdAt,price,-ratingsAverage");
   const [priceMax, setPriceMax] = useState(20);
   const [selectedDrinkTypes, setSelectedDrinkTypes] = useState([]);
 
   const handleSelectCategory = (cat) => {
     if (cat) {
-      setSearchParams({ category: cat });
+      setSearchParams({ category: cat }, { replace: true });
     } else {
       const newParams = new URLSearchParams(searchParams);
-      newParams.delete('category');
+      newParams.delete("category");
       setSearchParams(newParams);
     }
   };
@@ -44,8 +44,8 @@ const ShopPage = () => {
       const data = await getProducts(sortBy, params);
       setProducts(data || []);
     } catch (err) {
-      console.error('Failed to load products:', err);
-      setError('Unable to fetch products from server.');
+      console.error("Failed to load products:", err);
+      setError("Unable to fetch products from server.");
     } finally {
       setLoading(false);
     }
@@ -62,76 +62,22 @@ const ShopPage = () => {
 
   const handleToggleDrinkType = (type) => {
     setSelectedDrinkTypes((prev) =>
-      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
+      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type],
     );
   };
 
-  // Filter products based on search, category, price, and drink types
+  // Filter products based on active search, price, and drink types (category is handled directly by the API parameter)
   const filteredProducts = products.filter((item) => {
     // Search filter
     if (activeSearch) {
-      const matchName = item.name?.toLowerCase().includes(activeSearch.toLowerCase());
-      const matchDesc = item.description?.toLowerCase().includes(activeSearch.toLowerCase());
+      const matchName = item.name
+        ?.toLowerCase()
+        .includes(activeSearch.toLowerCase());
+      const matchDesc = item.description
+        ?.toLowerCase()
+        .includes(activeSearch.toLowerCase());
       if (!matchName && !matchDesc) return false;
     }
-
-    
-  // Category filter
-  if (selectedCategory) {
-    const categoryMap = {
-      Espresso: ["Espresso"],
-      Coffee: [
-        "Americano",
-        "Cappuccino",
-        "Latte",
-        "Mocha",
-        "Flat White",
-        "Cortado",
-        "Turkish Coffee",
-        "French Coffee",
-        "Spanish Latte",
-        "Iced Coffee",
-        "Iced Latte",
-        "Iced Mocha",
-        "Iced Americano",
-        "Cold Brew",
-        "Frappuccino",
-      ],
-      Tea: [
-        "Black Tea",
-        "Green Tea",
-        "Mint Tea",
-        "Karak Tea",
-        "Matcha Latte",
-        "Hibiscus Tea",
-        "Iced Tea",
-      ],
-      Specialty: [
-        "Hot Chocolate",
-        "Natural Energy Drink",
-        "Energy Drinks",
-        "Licorice Drink",
-        "Carob Drink",
-        "Sugarcane Juice",
-        "Tamarind Drink",
-        "Jallab",
-        "Qamar Al-Din",
-      ],
-      Milkshakes: ["Milkshake"],
-      Smoothies: ["Smoothie"],
-      "Fresh Juices": ["Juice"],
-    };
-
-    const keywords = categoryMap[selectedCategory] || [];
-
-    const matches = keywords.some(
-      (word) =>
-        item.name?.toLowerCase().includes(word.toLowerCase()) ||
-        item.category?.toLowerCase().includes(word.toLowerCase())
-    );
-
-    if (!matches) return false;
-  }
 
     // Price filter
     if (item.price > priceMax) {
@@ -140,9 +86,9 @@ const ShopPage = () => {
 
     // Drink types filter
     if (selectedDrinkTypes.length > 0) {
-      const itemCat = item.category || '';
+      const itemCat = item.category || "";
       const matchesDrinkType = selectedDrinkTypes.some((dt) =>
-        itemCat.toLowerCase().includes(dt.toLowerCase().replace(' drinks', ''))
+        itemCat.toLowerCase().includes(dt.toLowerCase().replace(" drinks", "")),
       );
       if (!matchesDrinkType) return false;
     }
@@ -178,7 +124,9 @@ const ShopPage = () => {
 
         {/* Sort Dropdown */}
         <div className="sort-dropdown-container">
-          <label htmlFor="sort-select" className="sort-label">Sort By:</label>
+          <label htmlFor="sort-select" className="sort-label">
+            Sort By:
+          </label>
           <div className="sort-select-wrapper">
             <select
               id="sort-select"
@@ -186,7 +134,9 @@ const ShopPage = () => {
               onChange={(e) => setSortBy(e.target.value)}
               className="sort-select"
             >
-              <option value="-createdAt,price,-ratingsAverage">Popularity</option>
+              <option value="-createdAt,price,-ratingsAverage">
+                Popularity
+              </option>
               <option value="price">Price: Low to High</option>
               <option value="-price">Price: High to Low</option>
               <option value="-ratingsAverage">Top Rated</option>
@@ -227,9 +177,9 @@ const ShopPage = () => {
               <button
                 className="reset-filters-btn"
                 onClick={() => {
-                  setSearchTerm('');
-                  setActiveSearch('');
-                  handleSelectCategory('');
+                  setSearchTerm("");
+                  setActiveSearch("");
+                  handleSelectCategory("");
                   setPriceMax(20);
                   setSelectedDrinkTypes([]);
                 }}
@@ -240,7 +190,10 @@ const ShopPage = () => {
           ) : (
             <div className="products-grid">
               {filteredProducts.map((product) => (
-                <ProductCard key={product._id || product.id} product={product} />
+                <ProductCard
+                  key={product._id || product.id}
+                  product={product}
+                />
               ))}
             </div>
           )}
