@@ -1,0 +1,129 @@
+.thank-you-page {
+  min-height: 100vh;
+  background: #fcfbfa;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: 20px;
+}
+
+
+.thank-you-card {
+
+  background: white;
+
+  max-width: 500px;
+  width: 100%;
+
+  text-align: center;
+
+  padding: 45px 35px;
+
+  border-radius: 18px;
+
+  border: 1px solid #ede8e1;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+
+}
+
+
+
+.thank-you-icon {
+
+  width: 80px;
+  height: 80px;
+
+  margin: 0 auto 20px;
+
+  border-radius: 50%;
+
+  background: #f5ebd9;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 40px;
+
+}
+
+
+
+.thank-you-card h1 {
+
+  font-family: 'Playfair Display', serif;
+
+  font-size: 36px;
+
+  color: #23120b;
+
+  margin-bottom: 15px;
+
+}
+
+
+
+.thank-you-card p {
+
+  color: #8c827a;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+
+  margin-bottom: 30px;
+
+}
+
+
+
+.thank-you-btn {
+
+  display: inline-block;
+
+  padding: 14px 35px;
+
+  background: #50311d;
+
+  color: white;
+
+  text-decoration: none;
+
+  border-radius: 8px;
+
+  font-weight: 600;
+
+  transition: 0.3s;
+
+}
+
+
+
+.thank-you-btn:hover {
+
+  background: #3b2314;
+
+}
+
+
+
+@media(max-width:600px){
+
+  .thank-you-card{
+
+    padding:35px 20px;
+
+  }
+
+
+  .thank-you-card h1{
+
+    font-size:28px;
+
+  }
+
+}

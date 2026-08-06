@@ -16,6 +16,8 @@ import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import Signup from './components/Authentication/Signup';
 import { CartProvider } from './context/CartContext';
+import CheckoutPage from "./pages/CheckoutPage";
+import ThankYouPage from './pages/ThankYouPage';
 import './App.css';
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/wishlist" element={<WishlistPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/thank-you" element={<ThankYouPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
