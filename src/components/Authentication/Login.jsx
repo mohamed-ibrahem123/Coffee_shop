@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import "./Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,7 +46,7 @@ const Login = () => {
       fullName: userFound.fullName,
       email: userFound.email,
     };
-    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+    login(currentUser);
 
     setSuccessMessage("Logged in successfully.");
 

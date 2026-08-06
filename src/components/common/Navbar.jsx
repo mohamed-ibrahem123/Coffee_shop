@@ -1,26 +1,53 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from "react-router-dom";
-import { Heart, ShoppingBag, User, Menu, X } from "lucide-react";
+import { Heart, ShoppingBag, User, Menu, X, LogOut } from "lucide-react";
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
+import { useAuth } from '../../context/AuthContext';
 import logoImg from '../../assets/logo.png';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
   const location = useLocation();
 
   const { totalCartCount } = useCart();
   const { wishlist } = useWishlist();
+  const { isLoggedIn, logout } = useAuth();
 
   const isActive = (path) => location.pathname === path;
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMenuOpen(false);
 
+  const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
+
+  const handleLogout = () => {
+    logout();
+    setIsDropdownOpen(false);
+    closeMenu();
+  };
+
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsDropdownOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="caffinity-navbar-wrapper">
@@ -56,7 +83,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Right Action Icons */}
+        {/* Right Action Icons & Auth UI */}
         <div className="navbar-actions">
           <Link to="/wishlist" className={`action-btn ${isActive('/wishlist') ? 'active' : ''}`} aria-label="Wishlist" style={{ position: 'relative' }}>
             <Heart className="action-icon" size={18} />
@@ -72,9 +99,37 @@ const Navbar = () => {
             <span className="cart-badge">{totalCartCount}</span>
           </Link>
 
-          <Link to="/login" className={`action-btn ${isActive('/login') ? 'active' : ''}`} aria-label="User Profile">
-            <User className="action-icon" size={18} />
-          </Link>
+          {isLoggedIn ? (
+            <div className="user-dropdown-wrapper" ref={dropdownRef}>
+              <button
+                className="action-btn user-icon-btn"
+                onClick={toggleDropdown}
+                aria-label="User menu"
+                aria-expanded={isDropdownOpen}
+              >
+                <User className="action-icon" size={18} />
+              </button>
+
+              {isDropdownOpen && (
+                <div className="user-dropdown-menu single-option">
+                  <button
+                    className="dropdown-item logout-item"
+                    onClick={handleLogout}
+                  >
+                    <LogOut size={16} className="dropdown-item-icon" />
+                    <span>Logout</span>
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link
+              to="/login"
+              className={`navbar-login-btn ${isActive('/login') ? 'active' : ''}`}
+            >
+              Login
+            </Link>
+          )}
         </div>
 
         {/* Mobile Toggle */}
