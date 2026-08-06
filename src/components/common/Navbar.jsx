@@ -12,17 +12,10 @@ const Navbar = () => {
 
   const { totalCartCount } = useCart();
 
-  const isActive = (path) => {
-    return location.pathname === path;
-  };
+  const isActive = (path) => location.pathname === path;
 
-  const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const closeMenu = () => setIsMenuOpen(false);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -40,7 +33,7 @@ const Navbar = () => {
           <span className="brand-name">Coffee shop</span>
         </Link>
 
-        {/* Collapsible Menu Wrapper (Desktop: inline links & actions, Mobile: dropdown) */}
+        {/* Collapsible Menu Wrapper (Desktop: inline links, Mobile: dropdown) */}
         <div className={`navbar-menu-wrapper ${isMenuOpen ? 'open' : ''}`}>
           {/* Navigation Links */}
           <div className="navbar-links">
@@ -58,33 +51,49 @@ const Navbar = () => {
             >
               Shop
             </Link>
-            <a href="#about" className="nav-link" onClick={closeMenu}>
+            <Link
+              to="/about"
+              className={`nav-link ${isActive('/about') ? 'active' : ''}`}
+              onClick={closeMenu}
+            >
               About
-            </a>
-
-            <a href="#contact" className="nav-link" onClick={closeMenu}>
+            </Link>
+            <Link
+              to="/blog"
+              className={`nav-link ${isActive('/blog') ? 'active' : ''}`}
+              onClick={closeMenu}
+            >
+              Blog
+            </Link>
+            <Link
+              to="/contact"
+              className={`nav-link ${isActive('/contact') ? 'active' : ''}`}
+              onClick={closeMenu}
+            >
               Contact
-            </a>
+            </Link>
           </div>
 
         </div>
 
         {/* Right Action Icons */}
         <div className="navbar-actions">
-          <button className="action-btn" aria-label="Wishlist">
-            <Heart className="action-icon" size={20} />
+          <button className="action-btn" aria-label="Search">
+            <Search className="action-icon" size={20} />
           </button>
-          <button
-            className="action-btn cart-btn"
-            aria-label="Shopping Cart"
-            onClick={() => navigate('/cart')}
-          >
+
+          <Link to="/wishlist" className={`action-btn ${isActive('/wishlist') ? 'active' : ''}`} aria-label="Wishlist">
+            <Heart className="action-icon" size={20} />
+          </Link>
+
+          <Link to="/cart" className={`action-btn cart-btn ${isActive('/cart') ? 'active' : ''}`} aria-label="Shopping Cart">
             <ShoppingBag className="action-icon" size={20} />
             <span className="cart-badge">{totalCartCount}</span>
-          </button>
-          <button className="action-btn" aria-label="User Profile">
+          </Link>
+
+          <Link to="/login" className={`action-btn ${isActive('/login') ? 'active' : ''}`} aria-label="User Profile">
             <User className="action-icon" size={20} />
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Toggle Button */}
