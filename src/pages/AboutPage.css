@@ -1,0 +1,245 @@
+.about-page {
+  overflow-x: hidden;
+}
+
+.about-section-label {
+  display: inline-block;
+  background: #f5ede4;
+  color: #8b5e34;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 6px 16px;
+  border-radius: 30px;
+  margin-bottom: 16px;
+}
+
+/* Hero */
+.about-hero {
+  background: linear-gradient(135deg, #2b1c12 0%, #4a3221 100%);
+  padding: 100px 24px;
+  text-align: center;
+  color: #fff;
+}
+
+.about-hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.about-hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f0e4d8;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 6px 16px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+.about-hero-title {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 18px;
+}
+
+.about-hero-subtitle {
+  font-size: 17px;
+  color: #d8c4b0;
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* Story */
+.about-story {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 90px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-story-image img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(43, 28, 18, 0.15);
+}
+
+.about-story-text h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2b1c12;
+  margin: 0 0 20px;
+}
+
+.about-story-text p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #7a6a5c;
+  margin: 0 0 16px;
+}
+
+@media (max-width: 768px) {
+  .about-story {
+    grid-template-columns: 1fr;
+  }
+  .about-story-image img {
+    height: 280px;
+  }
+}
+
+/* Stats */
+.about-stats {
+  background: #fbf6f0;
+  padding: 70px 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1150px;
+  margin: 0 auto;
+  border-radius: 24px;
+}
+
+@media (max-width: 768px) {
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.about-stat-card {
+  text-align: center;
+}
+
+.about-stat-icon {
+  width: 56px;
+  height: 56px;
+  background: #2b1c12;
+  color: #f0c896;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.about-stat-card h3 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #2b1c12;
+  margin: 0 0 4px;
+}
+
+.about-stat-card p {
+  font-size: 14px;
+  color: #a08c78;
+  margin: 0;
+}
+
+/* Values */
+.about-values {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 90px 24px;
+}
+
+.about-values-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.about-values-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2b1c12;
+  margin: 0;
+}
+
+.about-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 768px) {
+  .about-values-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-value-card {
+  background: #fff;
+  border: 1px solid #f0e4d8;
+  border-radius: 18px;
+  padding: 36px 28px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-value-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(43, 28, 18, 0.1);
+}
+
+.about-value-number {
+  font-size: 32px;
+  font-weight: 800;
+  color: #f0e4d8;
+  -webkit-text-stroke: 1.5px #c58b4f;
+  margin-bottom: 14px;
+}
+
+.about-value-card h3 {
+  font-size: 19px;
+  font-weight: 700;
+  color: #2b1c12;
+  margin: 0 0 10px;
+}
+
+.about-value-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #7a6a5c;
+  margin: 0;
+}
+
+/* CTA */
+.about-cta {
+  text-align: center;
+  padding: 90px 24px 100px;
+  background: linear-gradient(135deg, #fbf6f0, #f5ede4);
+}
+
+.about-cta h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #2b1c12;
+  margin: 0 0 12px;
+}
+
+.about-cta p {
+  font-size: 16px;
+  color: #7a6a5c;
+  margin: 0 0 28px;
+}
+
+.about-cta-btn {
+  display: inline-block;
+  background: #2b1c12;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 15px 36px;
+  border-radius: 30px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.about-cta-btn:hover {
+  transform: translateY(-2px);
+  background: #8b5e34;
+}

@@ -43,7 +43,7 @@ const CartPage = () => {
 
   return (
     <div className="cart-page-wrapper">
-    
+
       <div className="cart-banner">
         <h1>Shopping Cart</h1>
         <p>Savor our exceptional hot drinks, every sip comes with comfort and flavor.</p>
@@ -60,7 +60,7 @@ const CartPage = () => {
           </div>
         ) : (
           <div className="cart-main-content">
-            
+
             <div className="cart-items-section">
               <h2>Your Cart</h2>
               <div className="cart-list">
@@ -73,7 +73,7 @@ const CartPage = () => {
                         <span className="item-price">USD {(item.price * item.quantity).toFixed(2)}</span>
                       </div>
                       <p className="item-desc">{item.description}</p>
-                      
+
                       <div className="item-actions">
                         <div className="quantity-controls">
                           <button onClick={() => decreaseQuantity(item._id)} aria-label="Decrease">
@@ -94,7 +94,7 @@ const CartPage = () => {
               </div>
             </div>
 
-            
+
             <div className="order-summary-card">
               <h2>Order Summary</h2>
               <div className="summary-row">
@@ -121,7 +121,7 @@ const CartPage = () => {
           </div>
         )}
 
-        
+
         <div className="recommended-section">
           <h2>Recommended Products</h2>
           <div className="recommended-grid">
@@ -150,3 +150,4 @@ const CartPage = () => {
 };
 
 export default CartPage;
+

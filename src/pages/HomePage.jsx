@@ -14,7 +14,7 @@ export default function HomePage() {
   const [categoryStart, setCategoryStart] = useState(0);
 
 
-// Fetch products from API when the page loads
+  // Fetch products from API when the page loads
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -31,17 +31,17 @@ export default function HomePage() {
   }, []);
 
 
-// Add a special class to the body for Home page styling only(home footer)
+  // Add a special class to the body for Home page styling only (home footer)
   useEffect(() => {
-  document.body.classList.add("home-page");
+    document.body.classList.add("home-page");
 
-  return () => {
-    document.body.classList.remove("home-page");
-  };
-}, []);
+    return () => {
+      document.body.classList.remove("home-page");
+    };
+  }, []);
 
 
-// Extract unique categories from products
+  // Extract unique categories from products
   const categories = [
     ...new Set(products.map((product) => product.category))
   ].map((category, index) => ({
@@ -53,14 +53,14 @@ export default function HomePage() {
   }));
 
 
-// Display only 4 categories at a time
+  // Display only 4 categories at a time
   const visibleCategories = categories.slice(
     categoryStart,
     categoryStart + 4
   );
 
 
-// Move to the next group of categories
+  // Move to the next group of categories
   const handleNextCategories = () => {
     if (categoryStart + 4 < categories.length) {
       setCategoryStart(categoryStart + 4);
@@ -84,13 +84,13 @@ export default function HomePage() {
           <p className="hero-subtitle">
             Savor the world's finest coffees and teas, delivered to your doorstep.
           </p>
-            <button
+          <button
             className="hero-btn"
             type="button"
             onClick={() => navigate("/products")}
-            >
+          >
             Shop Now
-            </button>
+          </button>
         </div>
       </section>
 
@@ -104,8 +104,8 @@ export default function HomePage() {
           <div className="categories-grid">
             {visibleCategories.map((category) => (
 
-              <div 
-                key={category.id} 
+              <div
+                key={category.id}
                 className="category-card"
               >
                 <img
@@ -186,16 +186,16 @@ export default function HomePage() {
               <p className="offer-code">
                 Promo Code: CODED123
               </p>
-                <button
+              <button
                 className="offer-btn"
                 onClick={() => navigate("/products")}
-                >
+              >
                 Shop Now
-                </button>
+              </button>
             </div>
             <div className="offer-right">
               <img
-                src={products[0]?.image }
+                src={products[0]?.image}
                 alt="Offer"
                 className="offer-img"
               />

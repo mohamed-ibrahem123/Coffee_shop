@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { MapPin, Mail, Phone } from 'lucide-react';
 import './Footer.css';
 
@@ -11,13 +12,13 @@ const Footer = () => {
           <div className="footer-column">
             <h4 className="footer-heading">COLLECTIONS</h4>
             <ul className="footer-list">
-              <li><a href="#energy-drinks">Energy Drinks</a></li>
-              <li><a href="#specialty-drinks">Specialty Drinks</a></li>
-              <li><a href="#milkshakes">Milkshakes</a></li>
-              <li><a href="#smoothies">Smoothies</a></li>
-              <li><a href="#fresh-juices">Fresh Juices</a></li>
-              <li><a href="#cold-drinks">Cold Drinks</a></li>
-              <li><a href="#hot-drinks">Hot Drinks</a></li>
+              <li><Link to="/products">Energy Drinks</Link></li>
+              <li><Link to="/products">Specialty Drinks</Link></li>
+              <li><Link to="/products">Milkshakes</Link></li>
+              <li><Link to="/products">Smoothies</Link></li>
+              <li><Link to="/products">Fresh Juices</Link></li>
+              <li><Link to="/products">Cold Drinks</Link></li>
+              <li><Link to="/products">Hot Drinks</Link></li>
             </ul>
           </div>
 
@@ -25,8 +26,9 @@ const Footer = () => {
           <div className="footer-column">
             <h4 className="footer-heading">LEARN</h4>
             <ul className="footer-list">
-              <li><a href="#about-us">About us</a></li>
-              <li><a href="#about-teas">About our teas</a></li>
+              <li><Link to="/about">About us</Link></li>
+              <li><Link to="/about">About our teas</Link></li>
+              <li><Link to="/about">Tea academy</Link></li>
             </ul>
           </div>
 
@@ -34,10 +36,10 @@ const Footer = () => {
           <div className="footer-column">
             <h4 className="footer-heading">CUSTOMER SERVICE</h4>
             <ul className="footer-list">
-              <li><a href="#ordering-payment">Ordering and payment</a></li>
-              <li><a href="#delivery">Delivery</a></li>
-              <li><a href="#privacy-policy">Privacy and policy</a></li>
-              <li><a href="#terms-conditions">Terms & Conditions</a></li>
+              <li><Link to="/contact">Ordering and payment</Link></li>
+              <li><Link to="/contact">Delivery</Link></li>
+              <li><Link to="/contact">Privacy and policy</Link></li>
+              <li><Link to="/contact">Terms & Conditions</Link></li>
             </ul>
           </div>
 

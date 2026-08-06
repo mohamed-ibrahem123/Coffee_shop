@@ -1,0 +1,118 @@
+.blog-post-page {
+  max-width: 900px;
+  margin: 0 auto 80px;
+}
+
+/* Hero image with overlay */
+.blog-post-hero {
+  height: 420px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 0 24px 24px;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+
+.blog-post-hero-overlay {
+  width: 100%;
+  padding: 40px;
+  background: linear-gradient(to top, rgba(20, 12, 6, 0.9), rgba(20, 12, 6, 0.1));
+  border-radius: 0 0 24px 24px;
+  color: #fff;
+}
+
+.blog-post-back {
+  display: inline-block;
+  color: #f0e4d8;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 20px;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.blog-post-back:hover {
+  opacity: 1;
+}
+
+.blog-post-category {
+  display: inline-block;
+  background: #c58b4f;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.blog-post-title {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 16px;
+  max-width: 700px;
+}
+
+.blog-post-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.blog-post-dot {
+  opacity: 0.6;
+}
+
+/* Body */
+.blog-post-body {
+  padding: 48px 24px 0;
+  font-size: 17px;
+  line-height: 1.9;
+  color: #3d2e22;
+}
+
+.blog-post-body p {
+  margin: 0 0 22px;
+}
+
+.blog-post-body p:first-of-type::first-letter {
+  font-size: 46px;
+  font-weight: 700;
+  color: #8b5e34;
+  float: right;
+  margin-left: 10px;
+  line-height: 1;
+}
+
+.blog-post-footer {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #eee0d2;
+  text-align: center;
+}
+
+.blog-post-cta {
+  display: inline-block;
+  background: #2b1c12;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 30px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.blog-post-cta:hover {
+  transform: translateY(-2px);
+  background: #8b5e34;
+}
+
+/* Not found state */
+.blog-post-notfound {
+  text-align: center;
+  padding: 100px 24px;
+}

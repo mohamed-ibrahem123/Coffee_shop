@@ -34,7 +34,7 @@ const Navbar = () => {
           <span className="brand-name">Coffee shop</span>
         </Link>
 
-        {/* Navigation */}
+        {/* Collapsible Menu Wrapper (Desktop: inline links, Mobile: dropdown) */}
         <div className={`navbar-menu-wrapper ${isMenuOpen ? 'open' : ''}`}>
           <div className="navbar-links">
             <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`} onClick={closeMenu}>
