@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect,useCallback } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Star, ShoppingBag, ArrowLeft } from 'lucide-react';
 import { getProductById, getProducts } from '../services/api';
@@ -18,44 +18,43 @@ const ProductDetailsPage = () => {
   // Selection states
   const [selectedSize, setSelectedSize] = useState('Medium');
   const [selectedSugar, setSelectedSugar] = useState('Low');
-  const [selectedTemp, setSelectedTemp] = useState('Hot');
+  const [selectedTemp, setSelectedTemp] = useState("Hot");
   const [activeImage, setActiveImage] = useState('');
 
-  const fetchDetails = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      // Endpoint: GET http://localhost:3000/api/v1/products/:id
-      const data = await getProductById(id);
-      setProduct(data);
-      if (data?.image) {
-        setActiveImage(data.image);
-      }
+  const fetchDetails = useCallback(async () => {
+  setLoading(true);
+  setError(null);
 
-      // Fetch related products for bottom section
-      try {
-        const allProds = await getProducts();
-        const filtered = (allProds || [])
-          .filter((p) => p._id !== id && p.id !== id)
-          .slice(0, 3);
-        setRelatedProducts(filtered);
-      } catch (relErr) {
-        console.warn('Could not load related products:', relErr);
-      }
-    } catch (err) {
-      console.error(`Error loading product details for ID ${id}:`, err);
-      setError(`Failed to load product details from server for ID ${id}. Please ensure backend server is running.`);
-    } finally {
-      setLoading(false);
+  try {
+    const data = await getProductById(id);
+    setProduct(data);
+
+    if (data?.image) {
+      setActiveImage(data.image);
     }
-  };
 
+    const allProds = await getProducts();
+
+    const filtered = (allProds || [])
+      .filter((p) => p._id !== id && p.id !== id)
+      .slice(0, 3);
+
+    setRelatedProducts(filtered);
+  } catch (err) {
+    console.error(err);
+    setError(
+      `Failed to load product details from server for ID ${id}. Please ensure backend server is running.`
+    );
+  } finally {
+    setLoading(false);
+  }
+}, [id]);
   useEffect(() => {
     if (id) {
       fetchDetails();
       window.scrollTo(0, 0);
     }
-  }, [id]);
+  }, [id,fetchDetails]);
 
   if (loading) {
     return (
