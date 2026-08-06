@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Search, ChevronDown } from 'lucide-react';
 import { getProducts } from '../services/api';
 import ProductCard from '../components/products/ProductCard';
@@ -8,6 +9,9 @@ import ErrorMessage from '../components/common/ErrorMessage';
 import './ShopPage.css';
 
 const ShopPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedCategory = searchParams.get('category') || '';
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -16,28 +20,40 @@ const ShopPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeSearch, setActiveSearch] = useState('');
   const [sortBy, setSortBy] = useState('-createdAt,price,-ratingsAverage');
-  const [selectedCategory, setSelectedCategory] = useState('');
   const [priceMax, setPriceMax] = useState(20);
   const [selectedDrinkTypes, setSelectedDrinkTypes] = useState([]);
 
-  const fetchProductsData = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      // Endpoint specified: GET http://localhost:3000/api/v1/products?sort=-createdAt,price,-ratingsAverage
-      const data = await getProducts(sortBy);
-      setProducts(data || []);
-    } catch (err) {
-      console.error('Failed to load products:', err);
-      setError('Unable to fetch products from server. Please verify your backend server is running on http://localhost:3000.');
-    } finally {
-      setLoading(false);
+  const handleSelectCategory = (cat) => {
+    if (cat) {
+      setSearchParams({ category: cat });
+    } else {
+      const newParams = new URLSearchParams(searchParams);
+      newParams.delete('category');
+      setSearchParams(newParams);
     }
   };
 
+  const fetchProductsData = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const params = {};
+      if (selectedCategory) {
+        params.category = selectedCategory;
+      }
+      const data = await getProducts(sortBy, params);
+      setProducts(data || []);
+    } catch (err) {
+      console.error('Failed to load products:', err);
+      setError('Unable to fetch products from server.');
+    } finally {
+      setLoading(false);
+    }
+  }, [sortBy, selectedCategory]);
+
   useEffect(() => {
     fetchProductsData();
-  }, [sortBy]);
+  }, [fetchProductsData]);
 
   const handleSearchSubmit = (e) => {
     if (e) e.preventDefault();
@@ -186,7 +202,7 @@ const ShopPage = () => {
         <div className="shop-sidebar-column">
           <SidebarFilters
             selectedCategory={selectedCategory}
-            onSelectCategory={setSelectedCategory}
+            onSelectCategory={handleSelectCategory}
             priceMax={priceMax}
             onChangePriceMax={setPriceMax}
             selectedDrinkTypes={selectedDrinkTypes}
@@ -213,7 +229,7 @@ const ShopPage = () => {
                 onClick={() => {
                   setSearchTerm('');
                   setActiveSearch('');
-                  setSelectedCategory('');
+                  handleSelectCategory('');
                   setPriceMax(20);
                   setSelectedDrinkTypes([]);
                 }}

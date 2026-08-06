@@ -366,6 +366,7 @@
   color: var(--text-muted);
   margin-bottom: 12px;
   display: -webkit-box;
+  line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
