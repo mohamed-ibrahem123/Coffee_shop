@@ -6,10 +6,13 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import Login from "./components/Authentication/Login";
 import Signup from "./components/Authentication/Signup";
 import HomePage from './pages/HomePage';
+import { CartProvider } from "./context/CartContext";
+import CartPage from "./pages/CartPage";
 import "./App.css";
 
 function App() {
   return (
+  <CartProvider>
     <BrowserRouter>
       <div className="app-container">
         <Navbar />
@@ -18,6 +21,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/products" element={<ShopPage />} />
             <Route path="/products/:id" element={<ProductDetailsPage />} />
+            <Route path="/cart" element={<CartPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="*" element={<Navigate to="/products" replace />} />
@@ -26,6 +30,7 @@ function App() {
         <Footer />
       </div>
     </BrowserRouter>
+  </CartProvider>
   );
 }
 

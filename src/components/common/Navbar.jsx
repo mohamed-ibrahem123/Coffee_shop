@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Search, Heart, ShoppingBag, User, Menu, X } from 'lucide-react';
+import { useCart } from '../../context/CartContext';
 import logo from '../../assets/logo.png';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const { totalCartCount } = useCart();
 
   const isActive = (path) => {
     return location.pathname === path;
@@ -79,6 +83,27 @@ const Navbar = () => {
           </div>
         </div>
 
+        {/* Right Action Icons */}
+        <div className="navbar-actions">
+          <button className="action-btn" aria-label="Search">
+            <Search className="action-icon" size={20} />
+          </button>
+          <button className="action-btn" aria-label="Wishlist">
+            <Heart className="action-icon" size={20} />
+          </button>
+          <button 
+            className="action-btn cart-btn" 
+            aria-label="Shopping Cart"
+            onClick={() => navigate('/cart')}
+          >
+            <ShoppingBag className="action-icon" size={20} />
+            <span className="cart-badge">{totalCartCount}</span>
+          </button>
+          <button className="action-btn" aria-label="User Profile">
+            <User className="action-icon" size={20} />
+          </button>
+        </div>
+
         {/* Mobile Toggle Button */}
         <button
           className={`mobile-toggle-btn ${isMenuOpen ? 'open' : ''}`}
@@ -94,5 +119,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
