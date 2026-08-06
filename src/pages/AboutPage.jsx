@@ -3,24 +3,24 @@ import { Coffee, Leaf, Award, Users } from "lucide-react";
 import "./AboutPage.css";
 
 const stats = [
-  { icon: Coffee, number: "١٥+", label: "سنة خبرة" },
-  { icon: Users, number: "٥٠ك+", label: "عميل سعيد" },
-  { icon: Award, number: "٣٠+", label: "نوع مشروب" },
-  { icon: Leaf, number: "١٠٠٪", label: "بن طبيعي" },
+  { icon: Coffee, number: "15+", label: "Years of Experience" },
+  { icon: Users, number: "50K+", label: "Happy Customers" },
+  { icon: Award, number: "30+", label: "Drink Varieties" },
+  { icon: Leaf, number: "100%", label: "Natural Beans" },
 ];
 
 const values = [
   {
-    title: "جودة بلا حدود",
-    desc: "بنختار أفضل حبوب البن من مزارع مختارة بعناية حوالين العالم، ونحمصها بنفسنا عشان نضمن كل كوباية.",
+    title: "Uncompromising Quality",
+    desc: "We handpick the finest coffee beans from carefully selected farms around the world, and roast them ourselves to guarantee every cup.",
   },
   {
-    title: "شغف حقيقي",
-    desc: "كل فرد في فريقنا بيحب القهوة قبل ما يشتغل بيها. الشغف ده بتحسه في كل تفصيلة من التحضير للتقديم.",
+    title: "Real Passion",
+    desc: "Every member of our team loves coffee before they ever work with it. That passion shows in every detail, from preparation to presentation.",
   },
   {
-    title: "استدامة",
-    desc: "بنتعامل مع مزارعين بيعملوا بطرق مستدامة، وبنستخدم عبوات صديقة للبيئة في كل منتجاتنا.",
+    title: "Sustainability",
+    desc: "We work with farmers who follow sustainable practices, and use eco-friendly packaging across all our products.",
   },
 ];
 
@@ -30,12 +30,12 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="about-hero">
         <div className="about-hero-content">
-          <span className="about-hero-badge">حكايتنا</span>
+          <span className="about-hero-badge">Our Story</span>
           <h1 className="about-hero-title">
-            من حبة بن صغيرة،<br />لكوباية بتحكي قصة
+            From a Single Bean,<br />To a Story in a Cup
           </h1>
           <p className="about-hero-subtitle">
-            مش بنبيع قهوة بس، بنقدم تجربة بتبدأ من المزرعة ولحد ما توصلك في كوبايتك
+            We don't just sell coffee, we deliver an experience that begins on the farm and ends in your cup
           </p>
         </div>
       </section>
@@ -49,18 +49,19 @@ export default function AboutPage() {
           />
         </div>
         <div className="about-story-text">
-          <span className="about-section-label">البداية</span>
-          <h2>بدأنا بحلم بسيط</h2>
+          <span className="about-section-label">The Beginning</span>
+          <h2>We Started With a Simple Dream</h2>
           <p>
-            في سنة ٢٠١١، بدأنا كوفي شوب صغير في ركن هادي، بحلم واحد بس: نقدم قهوة
-            حقيقية بطعم أصيل، من غير مبالغة أو حاجات صناعية.
+            In 2011, we opened a small coffee shop in a quiet corner, with one dream:
+            to serve real coffee with an authentic taste, without exaggeration or artificial shortcuts.
           </p>
           <p>
-            مع مرور السنين، كبرنا وتوسعنا، بس فضلنا محافظين على نفس القيمة اللي
-            بدأنا بيها — كل كوباية لازم تكون مثالية، مهما كلفنا الوقت والمجهود.
+            Over the years, we grew and expanded, but we stayed true to the same value
+            we started with — every cup has to be perfect, no matter how much time and effort it takes.
           </p>
           <p>
-            دلوقتي بقينا وجهة يومية لآلاف العملاء، وده شرف بنحافظ عليه كل يوم.
+            Today, we've become a daily destination for thousands of customers,
+            and that's an honor we work to earn every single day.
           </p>
         </div>
       </section>
@@ -84,8 +85,8 @@ export default function AboutPage() {
       {/* Values */}
       <section className="about-values">
         <div className="about-values-header">
-          <span className="about-section-label">قيمنا</span>
-          <h2>ليه تختارنا</h2>
+          <span className="about-section-label">Our Values</span>
+          <h2>Why Choose Us</h2>
         </div>
         <div className="about-values-grid">
           {values.map((value, i) => (
@@ -100,10 +101,10 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="about-cta">
-        <h2>جاهز تجرب الفرق؟</h2>
-        <p>تصفح قائمة مشروباتنا وابدأ رحلتك معانا دلوقتي</p>
+        <h2>Ready to Taste the Difference?</h2>
+        <p>Browse our drink menu and start your journey with us today</p>
         <Link to="/products" className="about-cta-btn">
-          تصفح المنتجات
+          Browse Products
         </Link>
       </section>
     </div>
