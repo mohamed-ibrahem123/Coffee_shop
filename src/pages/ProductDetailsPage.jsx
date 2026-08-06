@@ -198,7 +198,7 @@ const ProductDetailsPage = () => {
             </div>
 
             {/* Options 3: Hot/Cold */}
-            <div className="option-group">
+            {/* <div className="option-group">
               <label className="option-label">Hot/Cold:</label>
               <div className="pill-options">
                 {['Hot', 'Cold'].map((temp) => (
@@ -211,7 +211,7 @@ const ProductDetailsPage = () => {
                   </button>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Action Buttons Row */}
             <div className="details-actions-row">

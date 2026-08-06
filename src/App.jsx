@@ -13,8 +13,8 @@ function App() {
     <BrowserRouter>
       <div className="app-container">
         <Navbar />
-        <main className="main-content">
-          <Routes>
+        <main className="main-content ">
+          <Routes >
             <Route path="/" element={<HomePage />} />
             <Route path="/products" element={<ShopPage />} />
             <Route path="/products/:id" element={<ProductDetailsPage />} />

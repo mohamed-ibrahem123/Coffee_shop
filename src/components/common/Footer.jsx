@@ -27,7 +27,6 @@ const Footer = () => {
             <ul className="footer-list">
               <li><a href="#about-us">About us</a></li>
               <li><a href="#about-teas">About our teas</a></li>
-              <li><a href="#tea-academy">Tea academy</a></li>
             </ul>
           </div>
 
@@ -52,7 +51,7 @@ const Footer = () => {
               </li>
               <li>
                 <Mail className="contact-icon" size={16} />
-                <span>amcepur@gmail.com</span>
+                <span>coffee_shop@gmail.com</span>
               </li>
               <li>
                 <Phone className="contact-icon" size={16} />
