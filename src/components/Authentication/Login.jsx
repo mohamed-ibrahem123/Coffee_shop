@@ -92,7 +92,7 @@ const Login = () => {
                   <input
                     type="email"
                     className="custom-input"
-                    placeholder="example@caffinity.com"
+                    placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -107,7 +107,7 @@ const Login = () => {
                   <input
                     type="password"
                     className={`custom-input ${errorMessage.includes("password") ? "input-error" : ""}`}
-                    placeholder="Password"
+                    placeholder="Enter your password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required

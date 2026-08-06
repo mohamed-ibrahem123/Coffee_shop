@@ -129,7 +129,7 @@ const Signup = () => {
                   <input
                     type="text"
                     className="custom-input"
-                    placeholder="John Doe"
+                    placeholder="Enter your name "
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     required
@@ -144,7 +144,7 @@ const Signup = () => {
                   <input
                     type="email"
                     className="custom-input"
-                    placeholder="example@caffinity.com"
+                    placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -159,7 +159,7 @@ const Signup = () => {
                   <input
                     type="password"
                     className="custom-input"
-                    placeholder="Password (min. 6 characters)"
+                    placeholder="Enter your password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -174,7 +174,7 @@ const Signup = () => {
                   <input
                     type="password"
                     className="custom-input"
-                    placeholder="Confirm Password"
+                    placeholder="Confirm your password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
