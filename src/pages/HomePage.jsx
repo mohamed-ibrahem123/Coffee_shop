@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../services/api";
 import ProductCard from "../components/products/ProductCard";
+import SkeletonCard from "../components/common/SkeletonCard";
 import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
 
@@ -138,10 +139,13 @@ export default function HomePage() {
         <h2 className="section-title">Popular Products</h2>
 
         <div className="drinks-grid">
-          {loading && <p>Loading...</p>}
-          {error && <p>{error}</p>}
-
-          {!loading &&
+          {loading ? (
+            Array.from({ length: 4 }).map((_, index) => (
+              <SkeletonCard key={index} />
+            ))
+          ) : error ? (
+            <p>{error}</p>
+          ) : (
             products
               .slice(0, 4)
               .map((product) => (
@@ -149,7 +153,8 @@ export default function HomePage() {
                   key={product._id || product.id}
                   product={product}
                 />
-              ))}
+              ))
+          )}
         </div>
       </section>
 
