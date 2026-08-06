@@ -2,6 +2,7 @@ import { useState, useEffect,useCallback } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Star, ShoppingBag, ArrowLeft } from 'lucide-react';
 import { getProductById, getProducts } from '../services/api';
+import { useCart } from '../context/CartContext';
 import SkeletonDetails from '../components/common/SkeletonDetails';
 import ErrorMessage from '../components/common/ErrorMessage';
 import './ProductDetailsPage.css';
@@ -9,6 +10,8 @@ import './ProductDetailsPage.css';
 const ProductDetailsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  
+  const { addToCart } = useCart();
 
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -22,39 +25,52 @@ const ProductDetailsPage = () => {
   const [activeImage, setActiveImage] = useState('');
 
   const fetchDetails = useCallback(async () => {
-  setLoading(true);
-  setError(null);
+    setLoading(true);
+    setError(null);
+    try {
+      // Fetch product by ID
+      const data = await getProductById(id);
+      setProduct(data);
+      if (data?.image) {
+        setActiveImage(data.image);
+      }
 
-  try {
-    const data = await getProductById(id);
-    setProduct(data);
-
-    if (data?.image) {
-      setActiveImage(data.image);
+      // Fetch related products for bottom section
+      try {
+        const allProds = await getProducts();
+        const filtered = (allProds || [])
+          .filter((p) => p._id !== id && p.id !== id)
+          .slice(0, 3);
+        setRelatedProducts(filtered);
+      } catch (relErr) {
+        console.warn('Could not load related products:', relErr);
+      }
+    } catch (err) {
+      console.error(`Error loading product details for ID ${id}:`, err);
+      setError(`Failed to load product details from server for ID ${id}. Please ensure backend server is running.`);
+    } finally {
+      setLoading(false);
     }
-
-    const allProds = await getProducts();
-
-    const filtered = (allProds || [])
-      .filter((p) => p._id !== id && p.id !== id)
-      .slice(0, 3);
-
-    setRelatedProducts(filtered);
-  } catch (err) {
-    console.error(err);
-    setError(
-      `Failed to load product details from server for ID ${id}. Please ensure backend server is running.`
-    );
-  } finally {
-    setLoading(false);
-  }
-}, [id]);
+  }, [id]);
   useEffect(() => {
     if (id) {
       fetchDetails();
       window.scrollTo(0, 0);
     }
   }, [id,fetchDetails]);
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart(product);
+    }
+  };
+
+  const handleBuyNow = () => {
+    if (product) {
+      addToCart(product);
+      navigate('/cart');
+    }
+  };
 
   if (loading) {
     return (
@@ -227,8 +243,12 @@ const ProductDetailsPage = () => {
 
             {/* Action Buttons Row */}
             <div className="details-actions-row">
-              <button className="add-cart-outlined-btn">ADD TO CART</button>
-              <button className="buy-now-filled-btn">BUY NOW</button>
+              <button className="add-cart-outlined-btn" onClick={handleAddToCart}>
+                ADD TO CART
+              </button>
+              <button className="buy-now-filled-btn" onClick={handleBuyNow}>
+                BUY NOW
+              </button>
             </div>
           </div>
         </div>
@@ -303,7 +323,14 @@ const ProductDetailsPage = () => {
                         {relItem.currency || "USD"}{" "}
                         {Number(relItem.price || 0).toFixed(2)}
                       </span>
-                      <button className="related-bag-btn" aria-label="Add item">
+                      <button
+                        className="related-bag-btn"
+                        aria-label="Add item"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          addToCart(relItem);
+                        }}
+                      >
                         <ShoppingBag size={14} />
                       </button>
                     </div>

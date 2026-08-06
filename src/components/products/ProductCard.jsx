@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-import { Star, ShoppingCart } from 'lucide-react';
+import { Star, ShoppingCart,Heart  } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+import { useWishlist } from '../../context/WishlistContext';
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   
   const { addToCart } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
 
   if (!product) return null;
 
@@ -23,6 +25,7 @@ const ProductCard = ({ product }) => {
     isAvailable = true,
   } = product;
 
+  const isFav = isInWishlist(_id || product.id);
   const formattedPrice = `${currency || 'USD'} ${Number(price || 0).toFixed(2)}`;
 
   const handleCardClick = () => {
@@ -34,6 +37,11 @@ const ProductCard = ({ product }) => {
   const handleAddToCart = (e) => {
     e.stopPropagation();
     addToCart(product);
+  };
+
+  const handleWishlistToggle = (e) => {
+    e.stopPropagation();
+    toggleWishlist(product);
   };
 
   // Badge category style logic
@@ -82,8 +90,12 @@ const ProductCard = ({ product }) => {
           <button className="add-to-cart-btn" onClick={handleAddToCart}>
             <span>Add to Cart</span>
           </button>
-          <button className="cart-icon-btn" onClick={handleAddToCart} aria-label="Add to cart icon">
-            <ShoppingCart size={16} />
+          <button className="wishlist-btn-bottom" onClick={handleWishlistToggle} aria-label="Add to wishlist">
+            <Heart
+              size={18}
+              color={isFav ? '#ef4444' : '#6b7280'}
+              fill={isFav ? '#ef4444' : 'transparent'}
+            />
           </button>
         </div>
       </div>

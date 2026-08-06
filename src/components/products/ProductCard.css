@@ -90,7 +90,7 @@
 .product-name {
   display: -webkit-box;
   -webkit-line-clamp: 2;
-  line-clamp: 2;              
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -167,4 +167,20 @@
   background-color: var(--primary-brown);
   color: #FFFFFF;
   border-color: var(--primary-brown);
+}
+
+.wishlist-btn-bottom {
+  background: #f3f4f6;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.wishlist-btn-bottom:hover {
+  background: #e5e7eb;
 }
