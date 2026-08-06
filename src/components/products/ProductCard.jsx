@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-import { Star, ShoppingCart } from 'lucide-react';
+import { Star, ShoppingCart,Heart  } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+import { useWishlist } from '../../context/WishlistContext';
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   
   const { addToCart } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
 
   if (!product) return null;
 
@@ -23,6 +25,7 @@ const ProductCard = ({ product }) => {
     isAvailable = true,
   } = product;
 
+  const isFav = isInWishlist(_id || product.id);
   const formattedPrice = `${currency || 'USD'} ${Number(price || 0).toFixed(2)}`;
 
   const handleCardClick = () => {
@@ -34,6 +37,11 @@ const ProductCard = ({ product }) => {
   const handleAddToCart = (e) => {
     e.stopPropagation();
     addToCart(product);
+  };
+
+  const handleWishlistToggle = (e) => {
+    e.stopPropagation();
+    toggleWishlist(product);
   };
 
   // Badge category style logic
@@ -48,6 +56,34 @@ const ProductCard = ({ product }) => {
       {/* Card Header & Image Container */}
       <div className="card-image-container">
         <span className={`category-badge ${badgeClass}`}>{category}</span>
+
+        <button
+          className="wishlist-btn"
+          onClick={handleWishlistToggle}
+          aria-label="Add to wishlist"
+          style={{
+            position: 'absolute',
+            top: '10px',
+            right: '10px',
+            background: 'rgba(255, 255, 255, 0.85)',
+            border: 'none',
+            borderRadius: '50%',
+            padding: '6px',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 2,
+            transition: 'all 0.2s ease-in-out'
+          }}
+        >
+          <Heart
+            size={18}
+            color={isFav ? '#ef4444' : '#6b7280'}
+            fill={isFav ? '#ef4444' : 'transparent'}
+          />
+        </button>
+
         {!isAvailable && (
           <span className="out-of-stock-badge">Out of Stock</span>
         )}

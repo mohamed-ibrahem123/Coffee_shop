@@ -16,12 +16,14 @@ import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import Signup from './components/Authentication/Signup';
 import { CartProvider } from './context/CartContext';
+import { WishlistProvider } from './context/WishlistContext';
 import './App.css';
 
 function App() {
   return (
     <CartProvider>
-      <BrowserRouter>
+      <WishlistProvider>
+        <BrowserRouter>
         <div className="app-container">
           <Navbar />
           <main className="main-content">
@@ -43,7 +45,8 @@ function App() {
           </main>
           <Footer />
         </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </WishlistProvider>
     </CartProvider>
   );
 }

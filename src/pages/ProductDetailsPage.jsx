@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Star, ShoppingBag, ArrowLeft } from 'lucide-react';
 import { getProductById, getProducts } from '../services/api';
+import { useCart } from '../context/CartContext';
 import SkeletonDetails from '../components/common/SkeletonDetails';
 import ErrorMessage from '../components/common/ErrorMessage';
 import './ProductDetailsPage.css';
@@ -9,6 +10,8 @@ import './ProductDetailsPage.css';
 const ProductDetailsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  
+  const { addToCart } = useCart();
 
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -36,7 +39,7 @@ const ProductDetailsPage = () => {
       try {
         const allProds = await getProducts();
         const filtered = (allProds || [])
-          .filter((p) => p._id !== id && p.id !== id)
+          .filter((p) => (p._id !== id && p.id !== id))
           .slice(0, 3);
         setRelatedProducts(filtered);
       } catch (relErr) {
@@ -56,6 +59,19 @@ const ProductDetailsPage = () => {
       window.scrollTo(0, 0);
     }
   }, [id]);
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart(product);
+    }
+  };
+
+  const handleBuyNow = () => {
+    if (product) {
+      addToCart(product);
+      navigate('/cart');
+    }
+  };
 
   if (loading) {
     return (
@@ -215,10 +231,10 @@ const ProductDetailsPage = () => {
 
             {/* Action Buttons Row */}
             <div className="details-actions-row">
-              <button className="add-cart-outlined-btn">
+              <button className="add-cart-outlined-btn" onClick={handleAddToCart}>
                 ADD TO CART
               </button>
-              <button className="buy-now-filled-btn">
+              <button className="buy-now-filled-btn" onClick={handleBuyNow}>
                 BUY NOW
               </button>
             </div>
@@ -292,7 +308,14 @@ const ProductDetailsPage = () => {
                       <span className="related-price">
                         {relItem.currency || 'USD'} {Number(relItem.price || 0).toFixed(2)}
                       </span>
-                      <button className="related-bag-btn" aria-label="Add item">
+                      <button
+                        className="related-bag-btn"
+                        aria-label="Add item"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          addToCart(relItem);
+                        }}
+                      >
                         <ShoppingBag size={14} />
                       </button>
                     </div>
