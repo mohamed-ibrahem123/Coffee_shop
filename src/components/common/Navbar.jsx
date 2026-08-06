@@ -67,32 +67,15 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Action Icons */}
-          <div className="navbar-actions">
-
-            <button className="action-btn" aria-label="Wishlist">
-              <Heart className="action-icon" size={20} />
-            </button>
-            <button className="action-btn cart-btn" aria-label="Shopping Cart">
-              <ShoppingBag className="action-icon" size={20} />
-              <span className="cart-badge">0</span>
-            </button>
-            <button className="action-btn" aria-label="User Profile">
-              <User className="action-icon" size={20} />
-            </button>
-          </div>
         </div>
 
         {/* Right Action Icons */}
         <div className="navbar-actions">
-          <button className="action-btn" aria-label="Search">
-            <Search className="action-icon" size={20} />
-          </button>
           <button className="action-btn" aria-label="Wishlist">
             <Heart className="action-icon" size={20} />
           </button>
-          <button 
-            className="action-btn cart-btn" 
+          <button
+            className="action-btn cart-btn"
             aria-label="Shopping Cart"
             onClick={() => navigate('/cart')}
           >
