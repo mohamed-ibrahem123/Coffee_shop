@@ -13,8 +13,8 @@ export default function WishlistPage() {
 
       {wishlist.length === 0 ? (
 
-        <div style={{ textAlign: "center", marginTop: "60px", color: "#6b7280" }}>
-          <Heart size={64} style={{ margin: "0 auto 16px", color: "#9ca3af" }} />
+        <div style={{ textAlign: "center", marginTop: "60px", color: "#45271B" }}>
+          <Heart size={64} style={{ margin: "0 auto 16px", color: "#45271B" }} />
           <p style={{ fontSize: "18px", marginBottom: "16px" }}>Your wishlist is currently empty.</p>
           <Link
             to="/products"
