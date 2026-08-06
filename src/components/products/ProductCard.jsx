@@ -93,7 +93,7 @@ const ProductCard = ({ product }) => {
           <button className="wishlist-btn-bottom" onClick={handleWishlistToggle} aria-label="Add to wishlist">
             <Heart
               size={18}
-              color={isFav ? '#ef4444' : '#6b7280'}
+              color={isFav ? '#ef4444' : '#4A2B15'}
               fill={isFav ? '#ef4444' : 'transparent'}
             />
           </button>
