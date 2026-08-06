@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Search, Heart, ShoppingBag, User, Menu, X } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+import logoImg from '../../assets/logo.png';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -23,14 +24,9 @@ const Navbar = () => {
   return (
     <header className="caffinity-navbar-wrapper">
       <nav className="caffinity-navbar">
-        {/* Brand Logo (inline SVG) */}
+        {/* Brand Logo */}
         <Link to="/" className="navbar-brand" onClick={closeMenu}>
-          <div className="logo-icon-wrapper" aria-hidden>
-            <svg width="42" height="42" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo-svg">
-              <rect width="48" height="48" rx="10" fill="#2b1c12" />
-              <path d="M24 12c-4 0-7 3-7 7 0 5 7 12 7 12s7-7 7-12c0-4-3-7-7-7z" fill="#f0c896" />
-            </svg>
-          </div>
+          <img src={logoImg} alt="Coffee shop Logo" className="logo-img" />
           <span className="brand-name">Coffee shop</span>
         </Link>
 
@@ -61,10 +57,6 @@ const Navbar = () => {
 
         {/* Right Action Icons */}
         <div className="navbar-actions">
-          <button className="action-btn" aria-label="Search">
-            <Search className="action-icon" size={18} />
-          </button>
-
           <Link to="/wishlist" className={`action-btn ${isActive('/wishlist') ? 'active' : ''}`} aria-label="Wishlist">
             <Heart className="action-icon" size={18} />
           </Link>

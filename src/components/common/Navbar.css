@@ -33,29 +33,22 @@
   transform: translateY(-1px);
 }
 
-.logo-icon-wrapper {
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-}
-
-.navbar-brand:hover .logo-icon-wrapper {
-  transform: scale(1.06);
-}
-
 .logo-img {
-  height: 55px;
+  height: 46px;
   width: auto;
   max-width: 100%;
   object-fit: contain;
   display: block;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  mix-blend-mode: multiply;
   transition: transform 0.3s ease;
 }
 
 .navbar-brand:hover .logo-img {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 .brand-name {
