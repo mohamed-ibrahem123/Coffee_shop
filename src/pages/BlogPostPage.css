@@ -78,13 +78,12 @@
 .blog-post-body p {
   margin: 0 0 22px;
 }
-
 .blog-post-body p:first-of-type::first-letter {
   font-size: 46px;
   font-weight: 700;
   color: #8b5e34;
-  float: right;
-  margin-left: 10px;
+  float: left;
+  margin-right: 10px;
   line-height: 1;
 }
 

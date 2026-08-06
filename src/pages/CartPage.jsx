@@ -114,7 +114,12 @@ const CartPage = () => {
                 <span>Total:</span>
                 <span>USD {total.toFixed(2)}</span>
               </div>
-              <button className="checkout-btn" onClick={() => alert('Proceeding to checkout!')}>
+
+                {/* add navigate */}
+              <button
+                className="checkout-btn"
+                onClick={() => navigate('/checkout')}
+              >
                 PROCEED TO CHECKOUT
               </button>
             </div>

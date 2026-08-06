@@ -3,60 +3,60 @@ import "./BlogPostPage.css";
 
 const blogPosts = {
   1: {
-    title: "أفضل طريقة لتحضير القهوة في البيت",
+    title: "The Best Way to Brew Coffee at Home",
     category: "Brewing Tips",
-    date: "١ أغسطس ٢٠٢٦",
-    readTime: "٥ دقايق",
+    date: "August 1, 2026",
+    readTime: "5 min read",
     image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200",
     author: "Coffee Shop Team",
     content: [
-      "عمل كوباية قهوة زي الكافيهات المحترفة مش محتاج معدات غالية، محتاج بس تعرف الأساسيات الصح.",
-      "أول حاجة: نوعية البن. اختار حبوب طازة اتحمصت من مدة قريبة، وطحنها لحظة التحضير أفضل بكتير من البن المطحون الجاهز.",
-      "ثاني حاجة: نسبة القهوة للمية. النسبة المثالية عادة بتكون 1:16 (يعني 15 جرام بن لكل 240 مل مية).",
-      "ثالث حاجة: درجة حرارة المية. المفروض تكون بين 90-96 درجة مئوية، مش مغلية تماماً عشان متحرقش البن.",
-      "وأخيراً: الوقت. اتركها تتخمر من 3 لـ 4 دقايق حسب طريقة التحضير اللي بتستخدمها (فرنش برس، V60، أو غيرها).",
+      "Making a cup of coffee like a professional cafe doesn't require expensive equipment, it just requires knowing the right basics.",
+      "First: bean quality. Choose fresh beans that were recently roasted, and grinding them right before brewing is far better than pre-ground coffee.",
+      "Second: coffee-to-water ratio. The ideal ratio is usually 1:16 (15 grams of coffee per 240ml of water).",
+      "Third: water temperature. It should be between 90-96°C, not fully boiling so it doesn't burn the beans.",
+      "And finally: time. Let it brew for 3 to 4 minutes depending on the method you're using (French press, V60, or others).",
     ],
   },
   2: {
-    title: "الفرق بين الإسبريسو واللاتيه والكابتشينو",
+    title: "Espresso vs. Latte vs. Cappuccino: What's the Difference?",
     category: "Coffee 101",
-    date: "٢٨ يوليو ٢٠٢٦",
-    readTime: "٤ دقايق",
+    date: "July 28, 2026",
+    readTime: "4 min read",
     image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200",
     author: "Coffee Shop Team",
     content: [
-      "الإسبريسو هو الأساس اللي بتتبني عليه كل المشروبات التانية — شوت قهوة مركز بيتعمل بضغط مية ساخنة على بن مطحون ناعم.",
-      "اللاتيه = شوت إسبريسو + كمية كبيرة من اللبن المبخر + طبقة رغوة رقيقة فوق. طعمه ناعم وخفيف.",
-      "الكابتشينو = نفس مكونات اللاتيه بس بنسب مختلفة — تلت إسبريسو، تلت لبن مبخر، وتلت رغوة كثيفة. طعمه أقوى وأغنى.",
-      "يعني لو بتحب طعم القهوة واضح، اختار كابتشينو. ولو بتحب مشروب ناعم وخفيف، اللاتيه هيكون أنسب ليك.",
+      "Espresso is the base that every other drink is built on — a concentrated coffee shot made by pushing hot water through finely ground coffee under pressure.",
+      "A latte = one shot of espresso + a large amount of steamed milk + a thin layer of foam on top. Its taste is smooth and light.",
+      "A cappuccino = the same ingredients as a latte but in different ratios — one third espresso, one third steamed milk, and one third thick foam. Its taste is stronger and richer.",
+      "So if you like a bold coffee flavor, go for a cappuccino. If you prefer something smooth and light, a latte will suit you better.",
     ],
   },
   3: {
-    title: "رحلة حبة القهوة من المزرعة للكوباية",
+    title: "The Journey of a Coffee Bean, From Farm to Cup",
     category: "Origins",
-    date: "٢٠ يوليو ٢٠٢٦",
-    readTime: "٦ دقايق",
+    date: "July 20, 2026",
+    readTime: "6 min read",
     image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1200",
     author: "Coffee Shop Team",
     content: [
-      "رحلة حبة القهوة بتبدأ في مزارع على ارتفاعات عالية في دول زي إثيوبيا والبرازيل وكولومبيا.",
-      "بعد الحصاد، الحبوب بتتقشر وتتجفف، وبعدين بتتفرز حسب الجودة والحجم.",
-      "أهم مرحلة هي التحميص (Roasting) — دي اللي بتحدد طعم القهوة النهائي، من فاتح وحامضي لغامق وقوي.",
-      "وأخيراً بتتطحن وتوصلك في كوبايتك، بعد رحلة طويلة عبرت آلاف الكيلومترات ومراحل دقيقة قبل ما توصلك.",
+      "The journey of a coffee bean begins on high-altitude farms in countries like Ethiopia, Brazil, and Colombia.",
+      "After harvesting, the beans are hulled and dried, then sorted by quality and size.",
+      "The most important stage is roasting — this is what determines the final flavor, from light and acidic to dark and bold.",
+      "Finally, it's ground and reaches your cup, after a long journey covering thousands of kilometers and precise steps before it gets to you.",
     ],
   },
   4: {
-    title: "فوائد الشاي الأخضر للصحة",
+    title: "The Health Benefits of Green Tea",
     category: "Health",
-    date: "١٥ يوليو ٢٠٢٦",
-    readTime: "٣ دقايق",
+    date: "July 15, 2026",
+    readTime: "3 min read",
     image: "https://images.unsplash.com/photo-1556881286-fc6915169721?w=1200",
     author: "Coffee Shop Team",
     content: [
-      "الشاي الأخضر غني بمضادات الأكسدة اللي بتساعد الجسم يقاوم الالتهابات والإجهاد التأكسدي.",
-      "بيحتوي على كمية معتدلة من الكافيين، فبيدّيك طاقة من غير الترمنة اللي بتحصل مع القهوة أحياناً.",
-      "دراسات كتير بتربط شرب الشاي الأخضر بانتظام بتحسين التركيز وصحة القلب.",
-      "جرب تشربه من غير سكر عشان تستمتع بطعمه الطبيعي وتاخد أقصى استفادة منه.",
+      "Green tea is rich in antioxidants that help the body fight inflammation and oxidative stress.",
+      "It contains a moderate amount of caffeine, giving you energy without the jitters that sometimes come with coffee.",
+      "Many studies link regular green tea consumption with improved focus and better heart health.",
+      "Try drinking it without sugar to enjoy its natural flavor and get the most benefit out of it.",
     ],
   },
 };
@@ -68,8 +68,8 @@ export default function BlogPostPage() {
   if (!post) {
     return (
       <div className="blog-post-notfound">
-        <h1>المقال مش موجود</h1>
-        <Link to="/blog">← رجوع للمدونة</Link>
+        <h1>Post Not Found</h1>
+        <Link to="/blog">← Back to Blog</Link>
       </div>
     );
   }
@@ -78,7 +78,7 @@ export default function BlogPostPage() {
     <article className="blog-post-page">
       <div className="blog-post-hero" style={{ backgroundImage: `url(${post.image})` }}>
         <div className="blog-post-hero-overlay">
-          <Link to="/blog" className="blog-post-back">← رجوع للمدونة</Link>
+          <Link to="/blog" className="blog-post-back">← Back to Blog</Link>
           <span className="blog-post-category">{post.category}</span>
           <h1 className="blog-post-title">{post.title}</h1>
           <div className="blog-post-meta">
@@ -97,7 +97,7 @@ export default function BlogPostPage() {
         ))}
 
         <div className="blog-post-footer">
-          <Link to="/blog" className="blog-post-cta">تصفح مقالات أخرى</Link>
+          <Link to="/blog" className="blog-post-cta">Browse More Articles</Link>
         </div>
       </div>
     </article>

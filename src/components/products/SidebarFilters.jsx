@@ -1,10 +1,10 @@
 import './SidebarFilters.css';
 
 const CATEGORIES = [
-  'Espresso',
-  'Coffee',
-  'Tea',
-  'Specialty',
+  'Hot Drinks',
+  'Cold Drinks',
+  'Energy Drinks',
+  'Specialty Drinks',
   'Milkshakes',
   'Smoothies',
   'Fresh Juices',
