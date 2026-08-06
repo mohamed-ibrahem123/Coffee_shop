@@ -81,55 +81,62 @@ const Navbar = () => {
               Contact
             </Link>
           </div>
-        </div>
 
-        {/* Right Action Icons & Auth UI */}
-        <div className="navbar-actions">
-          <Link to="/wishlist" className={`action-btn ${isActive('/wishlist') ? 'active' : ''}`} aria-label="Wishlist" style={{ position: 'relative' }}>
-            <Heart className="action-icon" size={18} />
-            {wishlist && wishlist.length > 0 && (
-              <span className="cart-badge">
-                {wishlist.length}
-              </span>
-            )}
-          </Link>
+          {/* Action Icons & Auth Section */}
+          <div className="navbar-actions">
+            {/* 1. Action Icons (Wishlist & Cart) */}
+            <div className="navbar-icons-group">
+              <Link to="/wishlist" className={`action-btn ${isActive('/wishlist') ? 'active' : ''}`} aria-label="Wishlist" onClick={closeMenu} style={{ position: 'relative' }}>
+                <Heart className="action-icon" size={18} />
+                {wishlist && wishlist.length > 0 && (
+                  <span className="cart-badge">
+                    {wishlist.length}
+                  </span>
+                )}
+              </Link>
 
-          <Link to="/cart" className={`action-btn cart-btn ${isActive('/cart') ? 'active' : ''}`} aria-label="Shopping Cart">
-            <ShoppingBag className="action-icon" size={18} />
-            <span className="cart-badge">{totalCartCount}</span>
-          </Link>
+              <Link to="/cart" className={`action-btn cart-btn ${isActive('/cart') ? 'active' : ''}`} aria-label="Shopping Cart" onClick={closeMenu}>
+                <ShoppingBag className="action-icon" size={18} />
+                <span className="cart-badge">{totalCartCount}</span>
+              </Link>
+            </div>
 
-          {isLoggedIn ? (
-            <div className="user-dropdown-wrapper" ref={dropdownRef}>
-              <button
-                className="action-btn user-icon-btn"
-                onClick={toggleDropdown}
-                aria-label="User menu"
-                aria-expanded={isDropdownOpen}
-              >
-                <User className="action-icon" size={18} />
-              </button>
-
-              {isDropdownOpen && (
-                <div className="user-dropdown-menu single-option">
+            {/* 2. Authentication Section (Login Button or User Icon) */}
+            <div className="navbar-auth-group">
+              {isLoggedIn ? (
+                <div className="user-dropdown-wrapper" ref={dropdownRef}>
                   <button
-                    className="dropdown-item logout-item"
-                    onClick={handleLogout}
+                    className="action-btn user-icon-btn"
+                    onClick={toggleDropdown}
+                    aria-label="User menu"
+                    aria-expanded={isDropdownOpen}
                   >
-                    <LogOut size={16} className="dropdown-item-icon" />
-                    <span>Logout</span>
+                    <User className="action-icon" size={18} />
                   </button>
+
+                  {isDropdownOpen && (
+                    <div className="user-dropdown-menu single-option">
+                      <button
+                        className="dropdown-item logout-item"
+                        onClick={handleLogout}
+                      >
+                        <LogOut size={16} className="dropdown-item-icon" />
+                        <span>Logout</span>
+                      </button>
+                    </div>
+                  )}
                 </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className={`navbar-login-btn ${isActive('/login') ? 'active' : ''}`}
+                  onClick={closeMenu}
+                >
+                  Login
+                </Link>
               )}
             </div>
-          ) : (
-            <Link
-              to="/login"
-              className={`navbar-login-btn ${isActive('/login') ? 'active' : ''}`}
-            >
-              Login
-            </Link>
-          )}
+          </div>
         </div>
 
         {/* Mobile Toggle */}
