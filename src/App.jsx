@@ -8,7 +8,6 @@ import ShopPage from './pages/ShopPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import CartPage from './pages/CartPage';
 import Login from './components/Authentication/Login';
-import ProfilePage from './pages/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 import WishlistPage from './pages/WishlistPage';
 import Navbar from './components/common/Navbar';
@@ -39,7 +38,6 @@ function App() {
               <Route path="/cart" element={<CartPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/profile" element={<ProfilePage />} />
               <Route path="/wishlist" element={<WishlistPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/thank-you" element={<ThankYouPage />} />

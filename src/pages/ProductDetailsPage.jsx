@@ -21,7 +21,6 @@ const ProductDetailsPage = () => {
   // Selection states
   const [selectedSize, setSelectedSize] = useState('Medium');
   const [selectedSugar, setSelectedSugar] = useState('Low');
-  const [selectedTemp, setSelectedTemp] = useState("Hot");
   const [activeImage, setActiveImage] = useState('');
 
   const fetchDetails = useCallback(async () => {
@@ -224,22 +223,6 @@ const ProductDetailsPage = () => {
                 ))}
               </div>
             </div>
-
-            {/* Options 3: Hot/Cold */}
-            {/* <div className="option-group">
-              <label className="option-label">Hot/Cold:</label>
-              <div className="pill-options">
-                {["Hot", "Cold"].map((temp) => (
-                  <button
-                    key={temp}
-                    className={`pill-btn ${selectedTemp === temp ? "active" : ""}`}
-                    onClick={() => setSelectedTemp(temp)}
-                  >
-                    {temp}
-                  </button>
-                ))}
-              </div>
-            </div> */}
 
             {/* Action Buttons Row */}
             <div className="details-actions-row">

@@ -1,21 +1,23 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-
   const [cartItems, setCartItems] = useState(() => {
-    const savedCart = localStorage.getItem('caffinity_cart');
+    const savedCart = localStorage.getItem("caffinity_cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem('caffinity_cart', JSON.stringify(cartItems));
+    localStorage.setItem("caffinity_cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
   const addToCart = (product, quantity = 1) => {
     setCartItems((prevItems) => {
-      const existingItemIndex = prevItems.findIndex((item) => item._id === product._id);
+      const existingItemIndex = prevItems.findIndex(
+        (item) => item._id === product._id,
+      );
 
       if (existingItemIndex > -1) {
         const updated = [...prevItems];
@@ -30,8 +32,8 @@ export const CartProvider = ({ children }) => {
   const increaseQuantity = (id) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
-        item._id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
+        item._id === id ? { ...item, quantity: item.quantity + 1 } : item,
+      ),
     );
   };
 
@@ -39,9 +41,9 @@ export const CartProvider = ({ children }) => {
     setCartItems((prevItems) =>
       prevItems
         .map((item) =>
-          item._id === id ? { ...item, quantity: item.quantity - 1 } : item
+          item._id === id ? { ...item, quantity: item.quantity - 1 } : item,
         )
-        .filter((item) => item.quantity > 0)
+        .filter((item) => item.quantity > 0),
     );
   };
 
@@ -53,8 +55,14 @@ export const CartProvider = ({ children }) => {
     setCartItems([]);
   };
 
-  const totalCartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
-  const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const totalCartCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
+  const subtotal = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0,
+  );
 
   return (
     <CartContext.Provider

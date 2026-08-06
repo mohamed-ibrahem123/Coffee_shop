@@ -20,8 +20,7 @@ const ShopPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeSearch, setActiveSearch] = useState("");
   const [sortBy, setSortBy] = useState("-createdAt,price,-ratingsAverage");
-  const [priceMax, setPriceMax] = useState(20);
-  const [selectedDrinkTypes, setSelectedDrinkTypes] = useState([]);
+  const [priceMax, setPriceMax] = useState(10);
 
   const handleSelectCategory = (cat) => {
     if (cat) {
@@ -60,13 +59,7 @@ const ShopPage = () => {
     setActiveSearch(searchTerm);
   };
 
-  const handleToggleDrinkType = (type) => {
-    setSelectedDrinkTypes((prev) =>
-      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type],
-    );
-  };
-
-  // Filter products based on active search, price, and drink types (category is handled directly by the API parameter)
+  // Filter products based on active search and price (category is handled directly by the API parameter)
   const filteredProducts = products.filter((item) => {
     // Search filter
     if (activeSearch) {
@@ -82,15 +75,6 @@ const ShopPage = () => {
     // Price filter
     if (item.price > priceMax) {
       return false;
-    }
-
-    // Drink types filter
-    if (selectedDrinkTypes.length > 0) {
-      const itemCat = item.category || "";
-      const matchesDrinkType = selectedDrinkTypes.some((dt) =>
-        itemCat.toLowerCase().includes(dt.toLowerCase().replace(" drinks", "")),
-      );
-      if (!matchesDrinkType) return false;
     }
 
     return true;
@@ -155,8 +139,6 @@ const ShopPage = () => {
             onSelectCategory={handleSelectCategory}
             priceMax={priceMax}
             onChangePriceMax={setPriceMax}
-            selectedDrinkTypes={selectedDrinkTypes}
-            onToggleDrinkType={handleToggleDrinkType}
           />
         </div>
 
@@ -180,8 +162,7 @@ const ShopPage = () => {
                   setSearchTerm("");
                   setActiveSearch("");
                   handleSelectCategory("");
-                  setPriceMax(20);
-                  setSelectedDrinkTypes([]);
+                  setPriceMax(5);
                 }}
               >
                 Reset All Filters

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Search, Heart, ShoppingBag, User, Menu, X } from 'lucide-react';
+import { Link, useLocation } from "react-router-dom";
+import { Heart, ShoppingBag, User, Menu, X } from "lucide-react";
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import logoImg from '../../assets/logo.png';
@@ -9,7 +9,6 @@ import './Navbar.css';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
   const { totalCartCount } = useCart();
   const { wishlist } = useWishlist();
@@ -62,7 +61,7 @@ const Navbar = () => {
           <Link to="/wishlist" className={`action-btn ${isActive('/wishlist') ? 'active' : ''}`} aria-label="Wishlist" style={{ position: 'relative' }}>
             <Heart className="action-icon" size={18} />
             {wishlist && wishlist.length > 0 && (
-              <span className="cart-badge" style={{ backgroundColor: '#ef4444' }}>
+              <span className="cart-badge">
                 {wishlist.length}
               </span>
             )}
