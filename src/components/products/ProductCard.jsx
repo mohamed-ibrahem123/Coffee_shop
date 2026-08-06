@@ -1,10 +1,12 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Star, ShoppingCart } from 'lucide-react';
+import { useCart } from '../../context/CartContext';
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
+  
+  const { addToCart } = useCart();
 
   if (!product) return null;
 
@@ -31,7 +33,7 @@ const ProductCard = ({ product }) => {
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
-    // Add to cart logic or notification
+    addToCart(product);
   };
 
   // Badge category style logic

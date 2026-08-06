@@ -1,9 +1,12 @@
 .caffinity-footer {
-  background-color: #F3ECE2;
-  border-top: 1px solid var(--border-light);
-  padding: 48px 20px 24px 20px;
-  color: var(--text-main);
+  background: linear-gradient(135deg, #1C0F0A 0%, #2C1810 50%, #3D2317 100%);
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(90deg, transparent, #D7B583, transparent) 1;
+  padding: 56px 20px 28px 20px;
+  color: #FAF7F2;
   margin-top: auto;
+  position: relative;
+  box-shadow: 0 -10px 30px rgba(28, 15, 10, 0.2);
 }
 
 .footer-container {
@@ -14,64 +17,103 @@
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  margin-bottom: 40px;
+  gap: 36px;
+  margin-bottom: 44px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-heading {
-  font-size: 13px;
+  font-family: var(--font-sans);
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.5px;
-  color: var(--text-main);
-  margin-bottom: 18px;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #F5E6D3 0%, #D7B583 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
   text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+.footer-heading::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: linear-gradient(90deg, #D7B583, transparent);
+  margin-top: 6px;
+  border-radius: 2px;
 }
 
 .footer-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .footer-list a {
-  font-size: 13px;
-  color: var(--text-muted);
-  transition: color 0.2s ease;
+  font-size: 14px;
+  color: #D6C7B2;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  display: inline-block;
 }
 
 .footer-list a:hover {
-  color: var(--primary-brown);
+  color: #F5D6A0;
+  transform: translateX(5px);
+  text-shadow: 0 0 12px rgba(245, 214, 160, 0.3);
 }
 
 .footer-contact-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
 .footer-contact-list li {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.4;
+  gap: 12px;
+  font-size: 14px;
+  color: #D6C7B2;
+  line-height: 1.5;
+  transition: color 0.25s ease;
+}
+
+.footer-contact-list li:hover {
+  color: #FAF7F2;
 }
 
 .contact-icon {
-  color: var(--text-muted);
+  color: #D7B583;
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 3px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-contact-list li:hover .contact-icon {
+  color: #F5D6A0;
+  transform: scale(1.15) rotate(5deg);
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-top: 1px solid rgba(215, 181, 131, 0.15);
   padding-top: 24px;
   text-align: center;
-  font-size: 12px;
-  color: var(--text-light);
+  font-size: 13px;
+  color: #A89682;
+}
+
+.footer-bottom p {
+  letter-spacing: 0.3px;
 }
 
 @media (max-width: 992px) {
@@ -82,8 +124,12 @@
 }
 
 @media (max-width: 576px) {
+  .caffinity-footer {
+    padding: 40px 16px 20px 16px;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 28px;
   }
-}
+}

@@ -1,43 +1,85 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Search, Heart, ShoppingBag, User } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Search, Heart, ShoppingBag, User, Menu, X } from 'lucide-react';
+import { useCart } from '../../context/CartContext';
+import logo from '../../assets/logo.png';
 import './Navbar.css';
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const { totalCartCount } = useCart();
 
   const isActive = (path) => {
-    if (path === '/products' || path === '/') {
-      return location.pathname === '/' || location.pathname.startsWith('/products');
-    }
     return location.pathname === path;
   };
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
 
   return (
     <header className="caffinity-navbar-wrapper">
       <nav className="caffinity-navbar">
         {/* Brand Logo */}
-        <Link to="/products" className="navbar-brand">
+        <Link to="/" className="navbar-brand" onClick={closeMenu}>
           <div className="logo-icon-wrapper">
-            <span className="logo-icon-inner">☕</span>
+            <img src={logo} alt="Coffee shop logo" className="logo-img" />
           </div>
           <span className="brand-name">Coffee shop</span>
         </Link>
 
-        {/* Navigation Links */}
-        <div className="navbar-links">
-          <Link to="/products" className={`nav-link ${isActive('/products') ? 'active' : ''}`}>
-            Home
-          </Link>
-          <Link to="/about" className={`nav-link ${isActive('/about') ? 'active' : ''}`}>
-            About
-          </Link>
-          <Link to="/blog" className={`nav-link ${isActive('/blog') ? 'active' : ''}`}>
-            Blog
-          </Link>
-          <Link to="/contact" className={`nav-link ${isActive('/contact') ? 'active' : ''}`}>
-            Contact
-          </Link>
+        {/* Collapsible Menu Wrapper (Desktop: inline links, Mobile: dropdown) */}
+        <div className={`navbar-menu-wrapper ${isMenuOpen ? 'open' : ''}`}>
+          {/* Navigation Links */}
+          <div className="navbar-links">
+            <Link
+              to="/"
+              className={`nav-link ${isActive('/') ? 'active' : ''}`}
+              onClick={closeMenu}
+            >
+              Home
+            </Link>
+            <Link
+              to="/products"
+              className={`nav-link ${isActive('/products') ? 'active' : ''}`}
+              onClick={closeMenu}
+            >
+              Shop
+            </Link>
+            <Link
+              to="/about"
+              className={`nav-link ${isActive('/about') ? 'active' : ''}`}
+              onClick={closeMenu}
+            >
+              About
+            </Link>
+            <Link
+              to="/blog"
+              className={`nav-link ${isActive('/blog') ? 'active' : ''}`}
+              onClick={closeMenu}
+            >
+              Blog
+            </Link>
+            <Link
+              to="/contact"
+              className={`nav-link ${isActive('/contact') ? 'active' : ''}`}
+              onClick={closeMenu}
+            >
+              Contact
+            </Link>
+          </div>
         </div>
 
         {/* Right Action Icons */}
@@ -50,12 +92,22 @@ const Navbar = () => {
           </Link>
           <Link to="/cart" className={`action-btn cart-btn ${isActive('/cart') ? 'active' : ''}`} aria-label="Shopping Cart">
             <ShoppingBag className="action-icon" size={20} />
-            <span className="cart-badge">0</span>
+            <span className="cart-badge">{totalCartCount}</span>
           </Link>
           <Link to="/login" className={`action-btn ${isActive('/login') ? 'active' : ''}`} aria-label="User Profile">
             <User className="action-icon" size={20} />
           </Link>
         </div>
+
+        {/* Mobile Toggle Button */}
+        <button
+          className={`mobile-toggle-btn ${isMenuOpen ? 'open' : ''}`}
+          onClick={toggleMenu}
+          aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
+        >
+          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </nav>
     </header>
   );

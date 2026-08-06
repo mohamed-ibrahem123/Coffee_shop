@@ -1,7 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/common/Navbar';
-import Footer from './components/common/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import BlogPage from './pages/BlogPage';
@@ -15,34 +13,40 @@ import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 import WishlistPage from './pages/WishlistPage';
-import './App.css';
+import Navbar from "./components/common/Navbar";
+import Footer from "./components/common/Footer";
+import Signup from "./components/Authentication/Signup";
+import { CartProvider } from "./context/CartContext";
+import "./App.css";
 
 function App() {
   return (
+  <CartProvider>
     <BrowserRouter>
       <div className="app-container">
         <Navbar />
         <main className="main-content">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/products" element={<ShopPage />} />
-            <Route path="/products/:id" element={<ProductDetailsPage />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="*" element={<NotFoundPage />} />
-            <Route path="/wishlist" element={<WishlistPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:id" element={<BlogPostPage />} />
-          </Routes>
-        </main>
+  <Routes>
+    <Route path="/" element={<HomePage />} />
+    <Route path="/about" element={<AboutPage />} />
+    <Route path="/blog" element={<BlogPage />} />
+    <Route path="/blog/:id" element={<BlogPostPage />} />
+    <Route path="/contact" element={<ContactPage />} />
+    <Route path="/products" element={<ShopPage />} />
+    <Route path="/products/:id" element={<ProductDetailsPage />} />
+    <Route path="/cart" element={<CartPage />} />
+    <Route path="/login" element={<LoginPage />} />
+    <Route path="/register" element={<RegisterPage />} />
+    <Route path="/signup" element={<Signup />} />
+    <Route path="/profile" element={<ProfilePage />} />
+    <Route path="/wishlist" element={<WishlistPage />} />
+    <Route path="*" element={<NotFoundPage />} />
+  </Routes>
+</main>
         <Footer />
       </div>
     </BrowserRouter>
+  </CartProvider>
   );
 }
 
