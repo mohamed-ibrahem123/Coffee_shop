@@ -78,10 +78,16 @@ const ProductDetailsPage = () => {
         </div>
         <div className="details-main-content">
           <ErrorMessage
-            message={error || 'Product not found.'}
+            message={error || "Product not found."}
             onRetry={fetchDetails}
           />
-          <div style={{ textTransform: 'center', textAlign: 'center', marginTop: '20px' }}>
+          <div
+            style={{
+              textTransform: "center",
+              textAlign: "center",
+              marginTop: "20px",
+            }}
+          >
             <Link to="/products" className="back-link">
               <ArrowLeft size={16} />
               <span>Back to Products</span>
@@ -92,17 +98,18 @@ const ProductDetailsPage = () => {
     );
   }
 
-  const defaultImg = 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800&q=80';
+  const defaultImg =
+    "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800&q=80";
   const displayImage = activeImage || product.image || defaultImg;
 
   // Alternate images array for thumbnail gallery
   const thumbnails = [
     displayImage,
-    'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=300&q=80',
-    'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=300&q=80',
+    "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=300&q=80",
+    "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=300&q=80",
   ];
 
-  const formattedPrice = `${product.currency || 'USD'} ${Number(product.price || 0).toFixed(2)}`;
+  const formattedPrice = `${product.currency || "USD"} ${Number(product.price || 0).toFixed(2)}`;
 
   return (
     <div className="product-details-page fade-in">
@@ -114,7 +121,7 @@ const ProductDetailsPage = () => {
 
       <div className="details-main-content">
         {/* Back Link */}
-        <button onClick={() => navigate('/products')} className="back-link-btn">
+        <button onClick={() => navigate("/products")} className="back-link-btn">
           <ArrowLeft size={16} />
           <span>Back to Shop</span>
         </button>
@@ -139,7 +146,7 @@ const ProductDetailsPage = () => {
               {thumbnails.map((thumb, idx) => (
                 <div
                   key={idx}
-                  className={`thumbnail-item ${displayImage === thumb ? 'active' : ''}`}
+                  className={`thumbnail-item ${displayImage === thumb ? "active" : ""}`}
                   onClick={() => setActiveImage(thumb)}
                 >
                   <img src={thumb} alt={`Thumbnail ${idx + 1}`} />
@@ -156,9 +163,15 @@ const ProductDetailsPage = () => {
             {/* Rating */}
             <div className="detail-rating-row">
               <Star size={16} fill="#EAB308" color="#EAB308" />
-              <span className="rating-val">{product.ratingsAverage ? Number(product.ratingsAverage).toFixed(1) : '4.5'}</span>
+              <span className="rating-val">
+                {product.ratingsAverage
+                  ? Number(product.ratingsAverage).toFixed(1)
+                  : "4.5"}
+              </span>
               <Star size={16} fill="#EAB308" color="#EAB308" />
-              <span className="reviews-val">({product.ratingsQuantity || 128} reviews)</span>
+              <span className="reviews-val">
+                ({product.ratingsQuantity || 128} reviews)
+              </span>
             </div>
 
             {/* Description */}
@@ -168,10 +181,10 @@ const ProductDetailsPage = () => {
             <div className="option-group">
               <label className="option-label">Drink Size:</label>
               <div className="pill-options">
-                {['Small', 'Medium', 'Large'].map((size) => (
+                {["Small", "Medium", "Large"].map((size) => (
                   <button
                     key={size}
-                    className={`pill-btn ${selectedSize === size ? 'active' : ''}`}
+                    className={`pill-btn ${selectedSize === size ? "active" : ""}`}
                     onClick={() => setSelectedSize(size)}
                   >
                     {size}
@@ -184,10 +197,10 @@ const ProductDetailsPage = () => {
             <div className="option-group">
               <label className="option-label">Sugar Level:</label>
               <div className="pill-options">
-                {['None', 'Low', 'Medium', 'High'].map((sugar) => (
+                {["None", "Low", "Medium", "High"].map((sugar) => (
                   <button
                     key={sugar}
-                    className={`pill-btn ${selectedSugar === sugar ? 'active' : ''}`}
+                    className={`pill-btn ${selectedSugar === sugar ? "active" : ""}`}
                     onClick={() => setSelectedSugar(sugar)}
                   >
                     {sugar}
@@ -200,10 +213,10 @@ const ProductDetailsPage = () => {
             {/* <div className="option-group">
               <label className="option-label">Hot/Cold:</label>
               <div className="pill-options">
-                {['Hot', 'Cold'].map((temp) => (
+                {["Hot", "Cold"].map((temp) => (
                   <button
                     key={temp}
-                    className={`pill-btn ${selectedTemp === temp ? 'active' : ''}`}
+                    className={`pill-btn ${selectedTemp === temp ? "active" : ""}`}
                     onClick={() => setSelectedTemp(temp)}
                   >
                     {temp}
@@ -214,12 +227,8 @@ const ProductDetailsPage = () => {
 
             {/* Action Buttons Row */}
             <div className="details-actions-row">
-              <button className="add-cart-outlined-btn">
-                ADD TO CART
-              </button>
-              <button className="buy-now-filled-btn">
-                BUY NOW
-              </button>
+              <button className="add-cart-outlined-btn">ADD TO CART</button>
+              <button className="buy-now-filled-btn">BUY NOW</button>
             </div>
           </div>
         </div>
@@ -281,15 +290,18 @@ const ProductDetailsPage = () => {
                     />
                   </div>
                   <div className="related-card-content">
-                    <h4 className="related-card-title">{relItem.name?.toUpperCase()}</h4>
+                    <h4 className="related-card-title">
+                      {relItem.name?.toUpperCase()}
+                    </h4>
                     <p className="related-card-desc">{relItem.description}</p>
                     <div className="related-card-footer">
                       <div className="related-rating-pill">
-                        <span>{relItem.ratingsAverage || '4.5'}</span>
+                        <span>{relItem.ratingsAverage || "4.5"}</span>
                         <Star size={11} fill="#EAB308" color="#EAB308" />
                       </div>
                       <span className="related-price">
-                        {relItem.currency || 'USD'} {Number(relItem.price || 0).toFixed(2)}
+                        {relItem.currency || "USD"}{" "}
+                        {Number(relItem.price || 0).toFixed(2)}
                       </span>
                       <button className="related-bag-btn" aria-label="Add item">
                         <ShoppingBag size={14} />
