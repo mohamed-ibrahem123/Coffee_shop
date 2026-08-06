@@ -21,7 +21,7 @@ export default function WishlistPage() {
             style={{
               display: "inline-block",
               padding: "10px 20px",
-              backgroundColor: "#ef4444",
+              backgroundColor: "#45271b",
               color: "#fff",
               borderRadius: "8px",
               textDecoration: "none",

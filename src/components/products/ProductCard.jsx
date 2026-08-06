@@ -56,34 +56,6 @@ const ProductCard = ({ product }) => {
       {/* Card Header & Image Container */}
       <div className="card-image-container">
         <span className={`category-badge ${badgeClass}`}>{category}</span>
-
-        <button
-          className="wishlist-btn"
-          onClick={handleWishlistToggle}
-          aria-label="Add to wishlist"
-          style={{
-            position: 'absolute',
-            top: '10px',
-            right: '10px',
-            background: 'rgba(255, 255, 255, 0.85)',
-            border: 'none',
-            borderRadius: '50%',
-            padding: '6px',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 2,
-            transition: 'all 0.2s ease-in-out'
-          }}
-        >
-          <Heart
-            size={18}
-            color={isFav ? '#ef4444' : '#6b7280'}
-            fill={isFav ? '#ef4444' : 'transparent'}
-          />
-        </button>
-
         {!isAvailable && (
           <span className="out-of-stock-badge">Out of Stock</span>
         )}
@@ -118,8 +90,12 @@ const ProductCard = ({ product }) => {
           <button className="add-to-cart-btn" onClick={handleAddToCart}>
             <span>Add to Cart</span>
           </button>
-          <button className="cart-icon-btn" onClick={handleAddToCart} aria-label="Add to cart icon">
-            <ShoppingCart size={16} />
+          <button className="wishlist-btn-bottom" onClick={handleWishlistToggle} aria-label="Add to wishlist">
+            <Heart
+              size={18}
+              color={isFav ? '#ef4444' : '#6b7280'}
+              fill={isFav ? '#ef4444' : 'transparent'}
+            />
           </button>
         </div>
       </div>
