@@ -29,15 +29,15 @@ const Navbar = () => {
           <Link to="/products" className={`nav-link ${isActive('/products') ? 'active' : ''}`}>
             Home
           </Link>
-          <a href="#about" className="nav-link">
+          <Link to="/about" className={`nav-link ${isActive('/about') ? 'active' : ''}`}>
             About
-          </a>
-          <a href="#blog" className="nav-link">
+          </Link>
+          <Link to="/blog" className={`nav-link ${isActive('/blog') ? 'active' : ''}`}>
             Blog
-          </a>
-          <a href="#contact" className="nav-link">
+          </Link>
+          <Link to="/contact" className={`nav-link ${isActive('/contact') ? 'active' : ''}`}>
             Contact
-          </a>
+          </Link>
         </div>
 
         {/* Right Action Icons */}
@@ -45,16 +45,16 @@ const Navbar = () => {
           <button className="action-btn" aria-label="Search">
             <Search className="action-icon" size={20} />
           </button>
-          <button className="action-btn" aria-label="Wishlist">
+          <Link to="/wishlist" className={`action-btn ${isActive('/wishlist') ? 'active' : ''}`} aria-label="Wishlist">
             <Heart className="action-icon" size={20} />
-          </button>
-          <button className="action-btn cart-btn" aria-label="Shopping Cart">
+          </Link>
+          <Link to="/cart" className={`action-btn cart-btn ${isActive('/cart') ? 'active' : ''}`} aria-label="Shopping Cart">
             <ShoppingBag className="action-icon" size={20} />
             <span className="cart-badge">0</span>
-          </button>
-          <button className="action-btn" aria-label="User Profile">
+          </Link>
+          <Link to="/login" className={`action-btn ${isActive('/login') ? 'active' : ''}`} aria-label="User Profile">
             <User className="action-icon" size={20} />
-          </button>
+          </Link>
         </div>
       </nav>
     </header>
