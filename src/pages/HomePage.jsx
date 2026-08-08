@@ -30,15 +30,6 @@ export default function HomePage() {
     fetchProducts();
   }, []);
 
-  // Add a special class to the body for Home page styling only(home footer)
-  useEffect(() => {
-    document.body.classList.add("home-page");
-
-    return () => {
-      document.body.classList.remove("home-page");
-    };
-  }, []);
-
   // Extract unique categories from products
   const categories = [
     ...new Set(products.map((product) => product.category)),
