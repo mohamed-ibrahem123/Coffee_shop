@@ -1,4 +1,4 @@
-import { useState, useEffect,useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Star, ShoppingBag, ArrowLeft } from 'lucide-react';
 import { getProductById, getProducts } from '../services/api';
@@ -10,7 +10,7 @@ import './ProductDetailsPage.css';
 const ProductDetailsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  
+
   const { addToCart } = useCart();
 
   const [product, setProduct] = useState(null);
@@ -56,7 +56,7 @@ const ProductDetailsPage = () => {
       fetchDetails();
       window.scrollTo(0, 0);
     }
-  }, [id,fetchDetails]);
+  }, [id, fetchDetails]);
 
   const handleAddToCart = () => {
     if (product) {
@@ -156,18 +156,7 @@ const ProductDetailsPage = () => {
                 }}
               />
             </div>
-            {/* Thumbnail Row */}
-            <div className="thumbnails-row">
-              {thumbnails.map((thumb, idx) => (
-                <div
-                  key={idx}
-                  className={`thumbnail-item ${displayImage === thumb ? "active" : ""}`}
-                  onClick={() => setActiveImage(thumb)}
-                >
-                  <img src={thumb} alt={`Thumbnail ${idx + 1}`} />
-                </div>
-              ))}
-            </div>
+
           </div>
 
           {/* Right Column: Details & Selection */}
