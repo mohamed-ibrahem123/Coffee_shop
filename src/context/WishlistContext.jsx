@@ -1,10 +1,20 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useState, useContext } from 'react';
+import { createContext, useContext, useState, useEffect } from "react";
 
 const WishlistContext = createContext();
 
 export const WishlistProvider = ({ children }) => {
-  const [wishlist, setWishlist] = useState([]);
+  const [wishlist, setWishlist] = useState(() => {
+    const savedWishlist = localStorage.getItem("caffinity_wishlist");
+    return savedWishlist ? JSON.parse(savedWishlist) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem(
+      "caffinity_wishlist",
+      JSON.stringify(wishlist)
+    );
+  }, [wishlist]);
 
   const getProductId = (item) => item?._id || item?.id;
 
